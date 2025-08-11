@@ -1,0 +1,412 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations and effects */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes matrixRain {
+  0% { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
+}
+
+/* Smooth scroll behavior for navigation */
+.smooth-scroll-enabled {
+  scroll-behavior: smooth !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #10b981, #065f46);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #34d399, #10b981);
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced glow effects */
+.glow-green {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Matrix animation enhancement */
+.matrix-rain {
+  animation: matrixRain 2s linear infinite;
+}
+
+/* Terminal cursor effect */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '▋';
+  animation: blink 1s infinite;
+  color: #10b981;
+}
+
+/* Enhanced button effects */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-glow:hover::before {
+  left: 100%;
+}
+
+/* Particle effect container */
+.particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 76% 47%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 142 76% 47%;
+    --secondary-foreground: 0 0% 2%;
+
+    --accent: 142 76% 47%;
+    --accent-foreground: 210 40% 98%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 215 20% 65%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 142 76% 47%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Completely prevent auto-scrolling */
+  html,
+  body {
+    scroll-behavior: auto !important;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent focus from scrolling */
+  * {
+    scroll-margin: 0 !important;
+    scroll-padding: 0 !important;
+  }
+  
+  /* Override any animations that might cause scroll */
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Force auto scroll behavior */
+html,
+body,
+* {
+  scroll-behavior: auto !important;
+}
+
+/* Only allow smooth scrolling when explicitly requested via class */
+html.smooth-scroll-enabled,
+html.smooth-scroll-enabled *,
+html.smooth-scroll-enabled *::before,
+html.smooth-scroll-enabled *::after {
+  scroll-behavior: smooth !important;
+}
+
+/* Only apply smooth scrolling when explicitly requested */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+.terminal-text {
+  position: relative;
+}
+
+.terminal-text::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #10b981;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Digital scan line effect */
+.digital-scan {
+  background: linear-gradient(to bottom, transparent 0%, rgba(16, 185, 129, 0.05) 50%, transparent 100%);
+  background-size: 100% 8px;
+  animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 -100vh;
+  }
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+/* Hacker-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0d9668;
+}
+
+/* Skill bar glow effect */
+.skill-bar-glow {
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.5));
+}
+
+/* Digital number animation */
+@keyframes digitalFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.digital-number {
+  font-family: monospace;
+  animation: digitalFlicker 2s infinite;
+}
+
+/* Matrix rain animation */
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* 3D hover effects */
+.icon-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.icon-3d:hover {
+  transform: translateZ(20px) rotateX(10deg) rotateY(10deg);
+}
+
+/* Sound wave animation */
+.sound-wave {
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+
+.sound-wave span {
+  display: inline-block;
+  width: 2px;
+  height: 100%;
+  margin: 0 1px;
+  background-color: #10b981;
+  animation: soundWave 1s ease-in-out infinite;
+}
+
+.sound-wave span:nth-child(2n) {
+  animation-delay: 0.2s;
+}
+
+.sound-wave span:nth-child(3n) {
+  animation-delay: 0.4s;
+}
+
+.sound-wave span:nth-child(4n) {
+  animation-delay: 0.6s;
+}
+
+.sound-wave span:nth-child(5n) {
+  animation-delay: 0.8s;
+}
+
+@keyframes soundWave {
+  0%,
+  100% {
+    height: 20%;
+  }
+  50% {
+    height: 100%;
+  }
+}
+
+/* Add padding to the bottom of the page to account for the fixed navigation */
+body {
+  padding-bottom: 70px;
+}
+
+/* Glitch effect for community badges */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+/* Cyberpunk glow effect */
+.cyberpunk-glow {
+  box-shadow: none;
+}
+
+/* Typing cursor animation */
+@keyframes typingCursor {
+  0%,
+  100% {
+    border-right-color: rgba(16, 185, 129, 1);
+  }
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+.typing-cursor {
+  border-right: 2px solid rgba(16, 185, 129, 1);
+  animation: typingCursor 1s step-end infinite;
+}
+
+/* Hacker text scramble effect */
+@keyframes textScramble {
+  0% {
+    color: rgba(16, 185, 129, 0.5);
+    text-shadow: 0 0 5px rgba(16, 185, 129, 0.5);
+  }
+  100% {
+    color: rgba(255, 255, 255, 1);
+    text-shadow: none;
+  }
+}
+
+.text-scramble {
+  animation: textScramble 0.5s ease-out forwards;
+}
