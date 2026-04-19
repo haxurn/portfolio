@@ -4,6 +4,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/site-header";
 import { SiteBackground } from "@/components/background";
+import { TelemetryChip } from "@/components/telemetry-chip";
+import { ShortcutsOverlay } from "@/components/shortcuts-overlay";
+import { HiddenCLI } from "@/components/hidden-cli";
+import { Konami } from "@/components/konami";
 import { profile } from "@/content";
 import "./globals.css";
 
@@ -75,6 +79,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </main>
 
           <SiteFooter />
+          <TelemetryChip />
+          <ShortcutsOverlay />
+          <HiddenCLI />
+          <Konami />
           <Toaster />
         </ThemeProvider>
       </body>
@@ -85,41 +93,65 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 async function SiteFooter() {
   "use cache";
   const year = new Date().getFullYear();
+  const buildTime = new Date().toISOString().slice(0, 16).replace("T", " ");
+  const sha = (process.env.VERCEL_GIT_COMMIT_SHA ?? "local-dev").slice(0, 7);
+
   return (
     <footer className="mt-24 border-t border-border/60">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-4 py-10 text-xs text-fg-subtle sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-        <div className="font-mono">
-          <span className="text-fg-muted">{profile.alias}</span>
-          <span className="text-border"> / </span>
-          © {year} {profile.name}
-          <span className="text-border"> · </span>
-          Next.js 16 · Tailwind v4
+      <div className="mx-auto w-full max-w-6xl px-4 pt-10 pb-6 sm:px-6 lg:px-8">
+        {/* Editorial sign-off */}
+        <div className="mb-8 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-fg-subtle">
+              sign off · end of file
+            </div>
+            <div className="mt-3 font-display text-4xl font-semibold tracking-tight text-fg md:text-6xl">
+              haxurn<span className="text-accent">.</span>
+            </div>
+          </div>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-fg-muted">
+            <a href="#home" className="hover:text-accent transition-colors">home</a>
+            <a href="#about" className="hover:text-accent transition-colors">about</a>
+            <a href="#projects" className="hover:text-accent transition-colors">projects</a>
+            <a href="#journey" className="hover:text-accent transition-colors">journey</a>
+            <a href="#contact" className="hover:text-accent transition-colors">contact</a>
+          </nav>
         </div>
-        <div className="flex items-center gap-4 font-mono">
-          <a
-            href={profile.socials.github.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-fg transition-colors"
-          >
-            github
-          </a>
-          <a
-            href={profile.socials.instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-fg transition-colors"
-          >
-            instagram
-          </a>
-          <a
-            href={`mailto:${profile.email}`}
-            className="hover:text-fg transition-colors"
-          >
-            email
-          </a>
+
+        {/* Console status bar */}
+        <div className="rounded-md border border-border bg-surface-2/40 font-mono text-[10px] uppercase tracking-[0.22em]">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 px-4 py-2.5 text-fg-subtle">
+            <span className="flex items-center gap-1.5 text-accent">
+              <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+              online
+            </span>
+            <Cell k="build" v={sha} />
+            <Cell k="deployed" v={buildTime} />
+            <Cell k="region" v="iad1" />
+            <Cell k="stack" v="next 16 · tw v4" />
+            <Cell k="theme" v="dark · amber-green" />
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 bg-bg/40 px-4 py-2 text-fg-subtle">
+            <span>© {year} {profile.name} — all rights, quietly reserved</span>
+            <span className="flex items-center gap-3">
+              <a href={profile.socials.github.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">gh</a>
+              <span className="text-border">·</span>
+              <a href={profile.socials.instagram.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">ig</a>
+              <span className="text-border">·</span>
+              <a href={`mailto:${profile.email}`} className="hover:text-accent transition-colors">mail</a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>
+  );
+}
+
+function Cell({ k, v }: { k: string; v: string }) {
+  return (
+    <span className="flex items-baseline gap-1.5">
+      <span className="text-fg-subtle/70">{k}</span>
+      <span className="text-fg">{v}</span>
+    </span>
   );
 }
