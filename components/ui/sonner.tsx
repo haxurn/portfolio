@@ -1,31 +1,28 @@
-"use client"
+"use client";
 
-import { useTheme } from "next-themes"
-import { Toaster as Sonner } from "sonner"
+import { useTheme } from "next-themes";
+import { Toaster as Sonner } from "sonner";
 
-type ToasterProps = React.ComponentProps<typeof Sonner>
+type ToasterProps = React.ComponentProps<typeof Sonner>;
 
-const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
-
+export function Toaster(props: ToasterProps) {
+  const { resolvedTheme } = useTheme();
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
-      className="toaster group"
+      theme={(resolvedTheme ?? "dark") as ToasterProps["theme"]}
+      position="bottom-right"
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-          description: "group-[.toast]:text-muted-foreground",
-          actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
-          cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
+            "group bg-[var(--color-surface)] text-[var(--color-fg)] border border-[var(--color-border)] shadow-[var(--shadow-card)] rounded-[var(--radius-md)]",
+          description: "text-[var(--color-fg-muted)]",
+          actionButton: "bg-[var(--color-accent)] text-[var(--color-accent-fg)]",
+          cancelButton: "bg-[var(--color-surface-2)] text-[var(--color-fg-muted)]",
+          success: "text-[var(--color-accent)]",
+          error: "text-[var(--color-danger)]",
         },
       }}
       {...props}
     />
-  )
+  );
 }
-
-export { Toaster }
