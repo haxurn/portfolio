@@ -60,6 +60,18 @@ export type ContributionCalendar = {
   end: string;
 };
 
+function readAttrs(tag: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  const attrRe = /([\w:-]+)="([^"]*)"/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = attrRe.exec(tag))) {
+    attrs[match[1]] = match[2];
+  }
+
+  return attrs;
+}
+
 export async function getContributions(
   username: string,
 ): Promise<ContributionCalendar | null> {
@@ -88,15 +100,19 @@ export async function getContributions(
       : 0;
 
     const cellRe =
-      /data-date="(\d{4}-\d{2}-\d{2})"[^>]*id="contribution-day-component-(\d+)-(\d+)"[^>]*data-level="(\d)"/g;
+      /<td\b[^>]*\bclass="[^"]*\bContributionCalendar-day\b[^"]*"[^>]*>/g;
 
     const byWeek = new Map<number, ContributionDay[]>();
     let m: RegExpExecArray | null;
     while ((m = cellRe.exec(html))) {
-      const date = m[1];
-      const col = parseInt(m[2], 10);
-      const row = parseInt(m[3], 10);
-      const level = Math.max(0, Math.min(4, parseInt(m[4], 10))) as
+      const attrs = readAttrs(m[0]);
+      const date = attrs["data-date"];
+      const idParts = attrs.id?.match(/^contribution-day-component-(\d+)-(\d+)$/);
+      if (!date || !idParts) continue;
+
+      const row = parseInt(idParts[1], 10);
+      const col = parseInt(idParts[2], 10);
+      const level = Math.max(0, Math.min(4, parseInt(attrs["data-level"] ?? "0", 10))) as
         | 0
         | 1
         | 2
