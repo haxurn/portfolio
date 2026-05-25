@@ -41,7 +41,7 @@ export function ProjectCard({
       whileHover={reduced ? undefined : { y: -3 }}
       transition={{ type: "spring", stiffness: 280, damping: 22 }}
       className={`group relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-surface shadow-card transition-colors hover:border-accent/40 ${
-        isHero ? "p-7 lg:p-10" : "p-6"
+        isHero ? "p-5 sm:p-7 lg:p-10" : "p-5 sm:p-6"
       }`}
     >
       {/* Spotlight follow cursor */}
@@ -101,7 +101,7 @@ export function ProjectCard({
         <h3
           className={
             isHero
-              ? "font-display text-[30px] font-semibold leading-[1.05] tracking-tight text-fg md:text-[44px]"
+              ? "font-display text-[26px] font-semibold leading-[1.05] tracking-tight text-fg sm:text-[30px] md:text-[44px]"
               : "font-display text-xl font-medium leading-tight tracking-tight text-fg"
           }
         >

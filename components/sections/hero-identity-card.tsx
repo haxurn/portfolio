@@ -17,7 +17,7 @@ export function HeroIdentityCard() {
   const reduced = useReducedMotion();
 
   return (
-    <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-surface p-8 shadow-card lg:p-10">
+    <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-surface p-6 shadow-card sm:p-8 lg:p-10">
       {/* Corner registration marks */}
       <Corner className="left-3 top-3" />
       <Corner className="right-3 top-3 rotate-90" />
@@ -126,7 +126,7 @@ export function HeroIdentityCard() {
 
       {/* Actions + sigil */}
       <motion.div
-        className="relative mt-10 flex flex-wrap items-end justify-between gap-6 lg:pl-8"
+        className="relative mt-10 flex flex-wrap items-end justify-between gap-4 sm:gap-6 lg:pl-8"
         initial={reduced ? undefined : { opacity: 0, y: 10 }}
         animate={reduced ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.35 }}

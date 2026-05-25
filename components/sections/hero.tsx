@@ -13,7 +13,7 @@ export function Hero() {
         <div className="lg:col-span-5">
           <HeroGithubCard />
         </div>
-        <div className="grid grid-cols-2 gap-4 lg:col-span-5">
+        <div className="grid grid-cols-1 gap-4 min-[420px]:grid-cols-2 lg:col-span-5">
           <HeroNowCard />
           <HeroFocusCard />
         </div>

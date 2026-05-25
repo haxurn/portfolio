@@ -98,7 +98,7 @@ export function Credentials() {
           </div>
 
           {/* Seals row */}
-          <div className="relative grid grid-cols-2 gap-x-4 gap-y-8 p-8 sm:grid-cols-3 md:px-10 md:py-12 lg:grid-cols-5">
+          <div className="relative grid grid-cols-2 gap-x-3 gap-y-8 p-6 sm:grid-cols-3 sm:gap-x-4 sm:p-8 md:px-10 md:py-12 lg:grid-cols-5">
             {CREDENTIALS.map((c, i) => (
               <SealTile key={c.id} credential={c} index={i} />
             ))}
@@ -193,7 +193,7 @@ function Seal({ glyph, pattern }: { glyph: string; pattern: SealPattern }) {
   return (
     <svg
       viewBox="0 0 100 100"
-      className="size-[92px] drop-shadow-[0_4px_12px_oklch(0.74_0.17_152/0.18)] transition-transform duration-500 group-hover:drop-shadow-[0_6px_20px_oklch(0.74_0.17_152/0.35)] md:size-[100px]"
+      className="size-[78px] drop-shadow-[0_4px_12px_oklch(0.74_0.17_152/0.18)] transition-transform duration-500 group-hover:drop-shadow-[0_6px_20px_oklch(0.74_0.17_152/0.35)] sm:size-[92px] md:size-[100px]"
       role="img"
     >
       {/* Base disc */}

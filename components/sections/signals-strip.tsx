@@ -64,7 +64,7 @@ export function SignalsStrip() {
                   <span className="truncate">{s.label}</span>
                 </div>
 
-                <div className="flex items-baseline gap-1 font-display text-2xl font-semibold text-fg tabular-nums tracking-tight lg:text-3xl">
+                <div className="flex items-baseline gap-1 font-display text-xl font-semibold text-fg tabular-nums tracking-tight sm:text-2xl lg:text-3xl">
                   {s.value}
                   <span className="text-[10px] font-normal text-accent/60">◆</span>
                 </div>

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { CommandPaletteTrigger } from "@/components/command-palette";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { profile } from "@/content";
@@ -22,7 +23,22 @@ type SectionId = (typeof navItems)[number]["short"];
 export function SiteHeader() {
   const [active, setActive] = useState<SectionId>("home");
   const [scrollPct, setScrollPct] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const rafRef = useRef<number | null>(null);
+
+  // Close the mobile menu on Escape and lock body scroll while open.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -137,7 +153,51 @@ export function SiteHeader() {
         <div className="flex items-center gap-1.5">
           <CommandPaletteTrigger />
           <ThemeToggle />
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="inline-flex size-9 items-center justify-center rounded-md border border-border bg-surface-2/60 text-fg-muted transition-colors hover:border-accent/40 hover:text-accent md:hidden"
+          >
+            {menuOpen ? <X className="size-4" /> : <Menu className="size-4" />}
+          </button>
         </div>
+      </div>
+
+      {/* mobile nav panel */}
+      <div
+        id="mobile-nav"
+        className={`md:hidden overflow-hidden border-t border-border/60 bg-bg/95 backdrop-blur-md transition-[max-height,opacity] duration-300 ease-out ${
+          menuOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav
+          aria-label="Mobile"
+          className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-1 px-4 py-4 sm:px-6"
+        >
+          {navItems.map((item, i) => {
+            const isActive = active === item.short;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className={`flex items-center gap-2.5 rounded-md px-3 py-3 font-mono text-sm transition-colors ${
+                  isActive
+                    ? "bg-surface text-fg"
+                    : "text-fg-muted hover:bg-surface hover:text-fg"
+                }`}
+              >
+                <span className="text-[10px] tabular-nums text-accent/70">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {item.label}
+              </a>
+            );
+          })}
+        </nav>
       </div>
 
       {/* scroll progress */}

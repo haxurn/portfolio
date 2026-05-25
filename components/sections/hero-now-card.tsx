@@ -82,8 +82,8 @@ export function HeroNowCard() {
           </svg>
         </div>
 
-        <div className="flex-1">
-          <div className="flex items-baseline font-mono text-3xl tabular-nums text-fg">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-baseline font-mono text-2xl tabular-nums text-fg sm:text-3xl">
             <span>{parts.hour}</span>
             <span className="mx-0.5 animate-pulse text-accent">:</span>
             <span>{parts.minute}</span>
