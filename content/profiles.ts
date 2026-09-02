@@ -54,6 +54,15 @@ export const profiles: readonly ExternalProfile[] = [
     note: "Competitive programming",
   },
   {
+    id: "tryhackme",
+    label: "TryHackMe",
+    handle: "haxurn",
+    url: "https://tryhackme.com/p/haxurn",
+    icon: "tryhackme",
+    kind: "ctf",
+    note: "Level 65 · Guru · top 2% · 114 rooms · 15 badges",
+  },
+  {
     id: "bunabyte",
     label: "Buna Byte CTF",
     handle: "haxurn",

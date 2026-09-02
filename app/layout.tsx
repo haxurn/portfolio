@@ -11,7 +11,7 @@ import { Konami } from "@/components/konami";
 import { profile } from "@/content";
 import "./globals.css";
 
-const siteUrl = "https://haxurn.dev";
+const siteUrl = "https://www.haxurn.space";
 
 export const viewport: Viewport = {
   themeColor: [
