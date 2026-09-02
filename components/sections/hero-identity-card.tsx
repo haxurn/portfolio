@@ -113,7 +113,7 @@ export function HeroIdentityCard() {
             <span className="size-1 rounded-full bg-accent/70" /> security · since 2023
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-1 rounded-full bg-accent/50" /> stack · ts-first
+            <span className="size-1 rounded-full bg-accent/50" /> TypeScript first
           </span>
         </div>
       </div>
@@ -142,7 +142,7 @@ export function HeroIdentityCard() {
               href="#projects"
               className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-surface-2 px-5 text-sm text-fg transition-colors hover:bg-surface hover:border-accent/40 active:scale-[0.98]"
             >
-              View dossier
+              See my work
               <ArrowRight className="size-4" />
             </MagneticLink>
           </span>

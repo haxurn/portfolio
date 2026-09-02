@@ -203,7 +203,7 @@ export function ContributionHeatmapSection() {
         <SectionHeader
           id="github"
           title="Every green cell is a small win."
-          sub="A year of commits, pulled live from my public GitHub profile and cached for one hour."
+          sub="A year of commits, pulled live from my public GitHub profile."
         />
       </Reveal>
 

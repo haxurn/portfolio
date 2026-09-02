@@ -48,7 +48,7 @@ export function Contact() {
         <SectionHeader
           id="contact"
           title="Get in touch. I read every message."
-          sub="Email is the fastest route; I usually reply within 24 to 48 hours. GitHub and Instagram are open as well."
+          sub="Email is fastest. I usually reply within one or two days. GitHub and Instagram work too."
         />
       </Reveal>
 

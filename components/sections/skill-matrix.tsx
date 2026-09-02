@@ -165,7 +165,7 @@ export function SkillMatrix({ groups }: SkillMatrixProps) {
                 </span>
               </div>
 
-              <div role="presentation" className="flex flex-wrap gap-1">
+              <div role="presentation" className="flex flex-wrap gap-1.5">
                 {group.items.map((skill) => {
                   const index = indexOf.get(skill.id) ?? 0;
                   return (

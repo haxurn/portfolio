@@ -26,7 +26,7 @@ export function About() {
                   <Row k="status" v="active" />
                   <Row k="base" v="addis ababa" />
                   <Row k="since" v="2023" />
-                  <Row k="modus" v="ts-first" />
+                  <Row k="works in" v="typescript" />
                 </dl>
               </div>
               <div className="font-mono text-[9px] uppercase tracking-[0.28em] text-fg-subtle">

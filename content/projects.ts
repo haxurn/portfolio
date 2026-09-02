@@ -40,7 +40,7 @@ export const projects: readonly Project[] = [
     summary:
       "Website for a full-service film and video production company in Addis Ababa.",
     description:
-      "YES Multimedia produces television, commercials, music videos, and multi-camera live broadcasts. I designed and built a site that puts the work first: film stills lead every section, a serif display face carries the studio's voice, and the portfolio index lets a producer reach a showreel in a single tap.",
+      "YES Multimedia makes television, commercials, music videos, and live broadcasts. I designed and built a site that puts their work first: film stills open every section, and a producer can reach any showreel in one tap.",
     stack: ["TypeScript", "Next.js", "Editorial design"],
     status: "shipped",
     type: "project",
@@ -67,7 +67,7 @@ export const projects: readonly Project[] = [
     summary:
       "A unified commerce platform for Ethiopia: online storefront, point of sale, marketplace, and delivery.",
     description:
-      "Axova is the product we build at Solvix Labs PLC, the company I co-founded. Merchants open a store in minutes, sell in person through Axova POS, reach customers on Axova Market, and ship through Axova Go, all from one account. I work across the web application and the platform beneath it.",
+      "Axova is the product we build at Solvix Labs PLC, the company I co-founded. A merchant opens an online store in minutes, sells in person with Axova POS, reaches shoppers on Axova Market, and ships with Axova Go, all from one account. I work on the web app and the platform under it.",
     stack: ["TypeScript", "Next.js", "Commerce", "Monorepo"],
     status: "ongoing",
     type: "project",
@@ -87,7 +87,7 @@ export const projects: readonly Project[] = [
     summary:
       "E-commerce storefront for a Kenyan eyewear retailer with three brands and a single checkout.",
     description:
-      "An eyewear storefront designed around the frames rather than the interface: a full-bleed editorial hero, three brand tiers in one catalogue, and a checkout that stays out of the way. The site is live and serving customers across Kenya.",
+      "An online eyewear store designed around the glasses, not the interface: large photography, three brands in one catalogue, and a checkout that stays out of the way. Live and serving customers across Kenya.",
     stack: ["TypeScript", "Next.js", "E-commerce"],
     status: "shipped",
     type: "project",
@@ -109,7 +109,7 @@ export const projects: readonly Project[] = [
     summary:
       "Bilingual cybersecurity academy for Ethiopia with certification tracks and course modules.",
     description:
-      "A training platform that teaches security in Amharic and English, with certification tracks, module-by-module progress tracking, and embedded lab video. I built it for people learning the field in the same place I learned it.",
+      "A training platform that teaches security in Amharic and English, with certification tracks, progress tracking, and lab videos. I built it for people learning the field where I learned it.",
     stack: ["TypeScript", "Next.js", "Security education"],
     status: "shipped",
     type: "project",
@@ -131,7 +131,7 @@ export const projects: readonly Project[] = [
     summary:
       "Framework-agnostic authentication middleware for Better Auth with session validation, caching, and typed errors.",
     description:
-      "Middleware that adds Better Auth session validation to any backend, including Hono, Fastify, Express, and Next.js route handlers. It caches sessions safely, fails with explicit typed errors, and never exposes tokens.",
+      "Adds Better Auth login checks to any backend: Hono, Fastify, Express, or Next.js. It caches sessions safely, returns clear typed errors, and never leaks tokens.",
     stack: ["TypeScript", "Better Auth", "Security"],
     status: "ongoing",
     type: "plugin",
@@ -147,7 +147,7 @@ export const projects: readonly Project[] = [
     summary:
       "Waitlist plugin for Better Auth with email verification, queue management, and referrals.",
     description:
-      "A Better Auth plugin that turns sign-ups into a managed waitlist: verification emails, queue position tracking, referral links, and one-line administrative invites. It ships with the type definitions you would expect from a first-party feature.",
+      "A Better Auth plugin that turns sign-ups into a managed waitlist: verification emails, queue positions, referral links, and one-line admin invites. Fully typed, like a built-in feature.",
     stack: ["TypeScript", "Better Auth", "Plugin"],
     status: "ongoing",
     type: "plugin",
@@ -164,7 +164,7 @@ export const projects: readonly Project[] = [
     summary:
       "Monorepo foundation for a suite of cybersecurity tools and shared packages.",
     description:
-      "The base on which I build security tooling: one monorepo, a shared architecture, and reusable packages. It exists so that each new scanner or CTF utility starts from an established standard rather than an empty file.",
+      "The base I build security tools on: one monorepo, shared structure, reusable packages. Each new scanner or CTF utility starts from a standard instead of an empty file.",
     stack: ["TypeScript", "Monorepo", "CTF"],
     status: "ongoing",
     type: "project",
@@ -180,7 +180,7 @@ export const projects: readonly Project[] = [
     summary:
       "Merged upstream documentation for Better Auth's Fastify integration, plus the waitlist plugin proposal that became better-waitlist.",
     description:
-      "Upstream contributions to better-auth/better-auth, the TypeScript authentication framework. My Fastify integration guide was merged into the official documentation. I also proposed a first-party waitlist plugin; that work now ships as the standalone better-waitlist package.",
+      "Contributions to Better Auth, the TypeScript authentication framework. My Fastify integration guide was merged into the official docs. I also proposed a built-in waitlist plugin; that work now ships as my better-waitlist package.",
     stack: ["TypeScript", "Open Source", "Authentication"],
     status: "shipped",
     type: "contribution",
@@ -197,7 +197,7 @@ export const projects: readonly Project[] = [
     summary:
       "Two merged upstream pull requests on Better Auth's collaboration platform for humans and AI agents.",
     description:
-      "Upstream contributions to better-auth/better-hub, a collaboration platform designed for mixed human and AI-agent workflows. Across two merged pull requests I added Firefox support to the browser extension, including download handling for both Chrome and Firefox.",
+      "Contributions to better-hub, Better Auth's collaboration platform for people and AI agents. In two merged pull requests I added Firefox support to the browser extension, including downloads for both Chrome and Firefox.",
     stack: ["TypeScript", "Open Source", "Browser extension"],
     status: "shipped",
     type: "contribution",
@@ -214,7 +214,7 @@ export const projects: readonly Project[] = [
     summary:
       "Two merged upstream pull requests on the Node.js SDK for Chapa, Ethiopia's payment gateway.",
     description:
-      "Upstream contributions to fireayehu/chapa-nodejs, the TypeScript SDK for Chapa. Across two merged pull requests I added refund support, typed error handling, a build system, and a test suite to the library Ethiopian developers rely on for payments.",
+      "Contributions to chapa-nodejs, the TypeScript SDK for Chapa, Ethiopia's payment gateway. In two merged pull requests I added refunds, typed error handling, a build system, and tests.",
     stack: ["TypeScript", "Open Source", "Payments"],
     status: "shipped",
     type: "contribution",

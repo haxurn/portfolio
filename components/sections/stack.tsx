@@ -10,7 +10,7 @@ export function Stack() {
         <SectionHeader
           id="stack"
           title="The tools behind the work."
-          sub="Every entry is backed by my repositories: the note under each name says where it is used. Logos are the official marks, served from Simple Icons and the SVG Logos collection."
+          sub="Every tool here appears in my repositories. The note under each name says where I use it."
         />
       </Reveal>
 

@@ -28,11 +28,11 @@ export const profile: Profile = {
   alias: "Haxurn",
   role: "Cybersecurity + full-stack developer",
   tagline:
-    "Security engineer and full-stack developer, co-founder of Solvix Labs PLC, and a music producer in training.",
+    "I build web and mobile products, test their security, and co-founded Solvix Labs PLC. On weekends I make music.",
   bio: [
-    "My name is Samson Tesfaye, and online I go by Haxurn. I am a security engineer and full-stack developer based in Addis Ababa. Most of my week is spent reading binaries, writing TypeScript, and looking for the small improvements that make a system safer or an interface calmer.",
-    "I am self-taught. I wrote my first lines of HTML and CSS at fifteen, building small pages for friends and taking them apart to see why they broke. That habit of looking underneath became an interest in security, and at sixteen I joined the Information Network Security Administration, where I learned the discipline from analysts who had practised it for a decade. In 2024 I began working on INSA's red team, testing systems in authorised engagements. Python and capture-the-flag competitions followed the same year, and by the middle of that year I had moved into full-time TypeScript development.",
-    "Today I am co-founder and engineer at Solvix Labs PLC, founded in 2024, where we build Axova, a unified commerce platform for Ethiopian merchants. Alongside that work I author and maintain plugins for the Better Auth ecosystem and contribute to open-source projects.",
+    "My name is Samson Tesfaye. Online I go by Haxurn. I am a security engineer and full-stack developer in Addis Ababa. Most of my week goes into two things: building software in TypeScript, and testing software to find out how it breaks.",
+    "I taught myself. At fifteen I wrote my first HTML and CSS, made small pages for friends, and kept taking them apart to see why they broke. That curiosity led to security. At sixteen I joined INSA, Ethiopia's national security agency, and learned from analysts with a decade of experience. In 2024 I joined INSA's red team, where I test real systems with permission and report what I find. The same year I learned Python, started competing in capture-the-flag events, and moved into full-time TypeScript development.",
+    "Today I am co-founder and engineer at Solvix Labs PLC, which we started in 2024. We build Axova, a platform that lets Ethiopian merchants sell online, in store, and through a marketplace from one account. Alongside that, I publish plugins for Better Auth and contribute to open-source projects.",
   ],
   location: "Addis Ababa, Ethiopia",
   timezone: "Africa/Addis_Ababa",

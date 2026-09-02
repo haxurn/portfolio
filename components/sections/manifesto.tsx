@@ -13,21 +13,21 @@ const TENETS: Tenet[] = [
     title: "Read the binary, then the specification.",
     glyph: "▚",
     body:
-      "Documentation describes intent; the compiled code describes behaviour. Before I trust a system, I read what it actually does, even when that takes a weekend and a debugger.",
+      "Documentation says what a system is meant to do. The code says what it actually does. Before I trust a system, I read the code, even if that takes a weekend and a debugger.",
   },
   {
     index: "II",
     title: "Exploit to understand. Build to protect.",
     glyph: "◈",
     body:
-      "Offensive work reveals structure that defenders rarely see. I keep both disciplines within reach, but the code I write exists to close doors, not to open them.",
+      "Attacking systems shows you weaknesses that defenders rarely see. I do both, but the code I write exists to close doors, not open them.",
   },
   {
     index: "III",
     title: "Small improvements, compounded.",
     glyph: "✦",
     body:
-      "A stricter null check. A clearer error message. A plugin released on a quiet Sunday. The work accumulates, and the value of a year is the honest sum of its smallest wins.",
+      "A stricter check. A clearer error message. A plugin released on a quiet Sunday. Small wins add up, and a year is worth the sum of them.",
   },
 ];
 

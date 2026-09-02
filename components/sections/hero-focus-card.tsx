@@ -26,7 +26,7 @@ export function HeroFocusCard() {
       </svg>
 
       <div className="font-mono text-[9px] uppercase tracking-[0.28em] text-fg-subtle">
-        ⌗ objective · v0.1
+        ⌗ current focus
       </div>
 
       <div className="mt-3">
@@ -62,7 +62,7 @@ export function HeroFocusCard() {
         </div>
 
         <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-fg-subtle">
-          <span>▸ eta · 2026-Q4</span>
+          <span>▸ next milestone · Q4 2026</span>
           <span className="text-accent/70">building</span>
         </div>
       </div>

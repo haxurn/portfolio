@@ -20,7 +20,7 @@ export function Projects() {
         <SectionHeader
           id="projects"
           title="Selected work, and where it lives."
-          sub="Client sites are shown with a screenshot. Open-source entries state whether the repository is my own or a fork I contributed to upstream; the pull request links are the record."
+          sub="Client sites come with a screenshot. Open-source entries say whether the repository is mine or one I contributed to. The pull request links are the proof."
           meta={
             <Link
               href={`https://github.com/${profile.socials.github.handle}`}

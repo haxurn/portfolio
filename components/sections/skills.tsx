@@ -9,8 +9,8 @@ export function Skills() {
       <Reveal preset="header">
         <SectionHeader
           id="skills"
-          title="Fifteen entries, one open dossier."
-          sub="Every tool I use in earnest, rated by how far I would trust myself with the documentation closed."
+          title="What I can do, and how well."
+          sub="Select any entry to read what it means in practice and where I have used it. Each one is rated on a four-step scale, from learning it now to where I do my best work."
         />
       </Reveal>
 
