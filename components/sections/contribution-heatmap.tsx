@@ -174,7 +174,7 @@ async function HeatmapGrid() {
 function HeatmapFallback() {
   return (
     <div className="flex items-center justify-center p-12 text-sm text-fg-muted">
-      Couldn't load contributions right now.
+      Couldn&apos;t load contributions right now.
     </div>
   );
 }
@@ -199,10 +199,9 @@ function HeatmapSkeleton() {
 export function ContributionHeatmapSection() {
   return (
     <section id="github" className="py-24 md:py-32">
-      <Reveal>
+      <Reveal preset="header">
         <SectionHeader
-          number="06"
-          label="GitHub"
+          id="github"
           title="Every green cell was a small win."
           sub="A year in commits. Cached for an hour, pulled live from the public profile."
         />

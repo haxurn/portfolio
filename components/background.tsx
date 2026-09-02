@@ -1,16 +1,40 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useRef } from "react";
+import { gsap } from "@/lib/gsap/register";
+import { useMotion } from "@/lib/gsap/match-media";
+
+const ORB_DRIFT_S = 4;
+const ORB_STAGGER_S = 2;
 
 export function SiteBackground() {
-  const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Orbs always render (no hydration mismatch); they only drift on desktop
+  // with motion allowed — three blurred layers are too heavy for phones.
+  useMotion(ref, {
+    "ok desktop": () => {
+      gsap.to("[data-orb]", {
+        y: -30,
+        x: 15,
+        opacity: 0.5,
+        duration: ORB_DRIFT_S,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        stagger: { each: ORB_STAGGER_S },
+        force3D: true,
+      });
+    },
+  });
 
   return (
     <div
+      ref={ref}
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
     >
-      {/* Base gradient wash with amber accent */}
+      {/* Base gradient wash with green accent */}
       <div
         className="absolute inset-0"
         style={{
@@ -20,13 +44,9 @@ export function SiteBackground() {
       />
 
       {/* Floating ambient orbs */}
-      {!reduced && (
-        <>
-          <FloatingOrb className="top-[20%] left-[10%]" delay={0} />
-          <FloatingOrb className="top-[60%] right-[5%]" delay={2} />
-          <FloatingOrb className="bottom-[20%] left-[30%]" delay={4} />
-        </>
-      )}
+      <FloatingOrb className="top-[20%] left-[10%]" />
+      <FloatingOrb className="top-[60%] right-[5%]" />
+      <FloatingOrb className="bottom-[20%] left-[30%]" />
 
       {/* Subtle dot grid */}
       <div
@@ -77,23 +97,13 @@ export function SiteBackground() {
   );
 }
 
-function FloatingOrb({ className = "", delay = 0 }: { className?: string; delay?: number }) {
+function FloatingOrb({ className = "" }: { className?: string }) {
   return (
-    <motion.div
-      className={`absolute size-[300px] rounded-full blur-[80px] pointer-events-none ${className}`}
+    <div
+      data-orb=""
+      className={`absolute size-[300px] rounded-full blur-[80px] pointer-events-none opacity-30 ${className}`}
       style={{
         background: "radial-gradient(circle, oklch(0.74 0.17 152 / 0.08), transparent 70%)",
-      }}
-      animate={{
-        y: [0, -30, 0],
-        x: [0, 15, 0],
-        opacity: [0.3, 0.5, 0.3],
-      }}
-      transition={{
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay,
       }}
     />
   );

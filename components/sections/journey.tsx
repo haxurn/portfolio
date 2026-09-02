@@ -5,10 +5,9 @@ import { journey } from "@/content";
 export function Journey() {
   return (
     <section id="journey" className="py-24 md:py-32">
-      <Reveal>
+      <Reveal preset="header">
         <SectionHeader
-          number="04"
-          label="Journey"
+          id="journey"
           title="A short timeline, long enough to matter."
         />
       </Reveal>

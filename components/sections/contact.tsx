@@ -43,10 +43,9 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-24 md:py-32">
-      <Reveal>
+      <Reveal preset="header">
         <SectionHeader
-          number="07"
-          label="Contact"
+          id="contact"
           title="Say hi. I read everything."
           sub="Fastest way is email — I usually reply within 24–48 hours. GitHub and Instagram are open too."
         />

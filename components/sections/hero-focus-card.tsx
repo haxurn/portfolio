@@ -1,14 +1,13 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
+import { CounterValue } from "@/components/counter-value";
 import { profile } from "@/content";
 
 const PCT = 38;
+const SEGMENTS = 24;
+const COUNTER_DELAY_S = 0.9;
 
+/** Server component. Segment entrance is choreographed by hero-stage.tsx via data-hero="seg". */
 export function HeroFocusCard() {
-  const reduced = useReducedMotion();
-  const segments = 24;
-  const filled = Math.round((PCT / 100) * segments);
+  const filled = Math.round((PCT / 100) * SEGMENTS);
 
   return (
     <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-surface p-5 shadow-card">
@@ -40,16 +39,10 @@ export function HeroFocusCard() {
         {/* Segmented progress */}
         <div className="mt-4 flex items-center gap-2">
           <div className="flex flex-1 gap-[2px]">
-            {Array.from({ length: segments }).map((_, i) => (
-              <motion.span
+            {Array.from({ length: SEGMENTS }).map((_, i) => (
+              <span
                 key={i}
-                initial={{ opacity: 0, scaleY: 0.4 }}
-                animate={{ opacity: 1, scaleY: 1 }}
-                transition={
-                  reduced
-                    ? undefined
-                    : { duration: 0.3, delay: i * 0.02, ease: "easeOut" }
-                }
+                data-hero="seg"
                 className={`h-4 flex-1 rounded-[1px] ${
                   i < filled
                     ? i === filled - 1
@@ -60,13 +53,16 @@ export function HeroFocusCard() {
               />
             ))}
           </div>
-          <span className="font-mono text-[11px] tabular-nums text-accent">
-            {PCT}%
-          </span>
+          <CounterValue
+            value={`${PCT}%`}
+            delay={COUNTER_DELAY_S}
+            start={null}
+            className="font-mono text-[11px] tabular-nums text-accent"
+          />
         </div>
 
         <div className="mt-2 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] text-fg-subtle">
-          <span>▸ eta · 2026-Q2</span>
+          <span>▸ eta · 2026-Q4</span>
           <span className="text-accent/70">building</span>
         </div>
       </div>

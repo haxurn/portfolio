@@ -145,15 +145,28 @@ export async function getContributions(
   }
 }
 
-export async function getGitHubStats(username: string): Promise<GitHubStats> {
+/**
+ * Public profile stats. Returns null when GitHub is unreachable or rate-limits
+ * an unauthenticated build (60 req/h without GITHUB_TOKEN) so `next build`
+ * never fails on it; the hero card renders its static fallback.
+ */
+export async function getGitHubStats(username: string): Promise<GitHubStats | null> {
   "use cache";
   cacheLife("hours");
   cacheTag(`github:${username}`);
 
-  const user = await fetchJson<GhUser>(`https://api.github.com/users/${username}`);
-  const repos = await fetchJson<GhRepo[]>(
-    `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
-  );
+  let user: GhUser;
+  let repos: GhRepo[];
+  try {
+    user = await fetchJson<GhUser>(`https://api.github.com/users/${username}`);
+    repos = await fetchJson<GhRepo[]>(
+      `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=updated`,
+    );
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn(`[github] stats unavailable for ${username}: ${message}`);
+    return null;
+  }
 
   const owned = repos.filter((r) => !r.fork);
   const stars = owned.reduce((acc, r) => acc + r.stargazers_count, 0);

@@ -107,9 +107,9 @@ export function Konami() {
               Classified clearance elevated.
             </h2>
             <p className="mt-3 font-mono text-xs leading-relaxed text-fg-muted">
-              // welcome, operator. you've found the back door.
+              {"// welcome, operator. you've found the back door."}
               <br />
-              // this signal will self-terminate in {Math.round(BANNER_MS / 1000)}s.
+              {`// this signal will self-terminate in ${Math.round(BANNER_MS / 1000)}s.`}
             </p>
 
             <div className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.24em] text-fg-subtle">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState, useEffect } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -15,19 +15,18 @@ export function ContactForm() {
     async (_prev, formData) => sendContactEmail(formData),
     initial,
   );
-  const [lastToastKey, setLastToastKey] = useState("");
+  const announced = useRef<ContactResult | null>(null);
 
+  // One toast per action result; the ref guards strict-mode double effects.
   useEffect(() => {
-    if (!state) return;
-    const key = JSON.stringify(state) + Date.now();
-    if (key === lastToastKey) return;
+    if (!state || announced.current === state) return;
+    announced.current = state;
     if (state.ok) {
       toast.success("Message sent. I'll get back within 24–48 hours.");
     } else {
       toast.error(state.error);
     }
-    setLastToastKey(key);
-  }, [state, lastToastKey]);
+  }, [state]);
 
   const fieldErrors = state && !state.ok ? state.fieldErrors : undefined;
 

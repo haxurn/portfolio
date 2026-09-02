@@ -1,66 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
+import { chapterNumber, sectionById, type SectionId } from "@/content";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { gsap } from "@/lib/gsap/register";
 
-const SECTIONS: { id: string; label: string; code: string }[] = [
-  { id: "home", label: "Home", code: "00" },
-  { id: "about", label: "About", code: "01" },
-  { id: "projects", label: "Projects", code: "02" },
-  { id: "craft", label: "Craft", code: "03" },
-  { id: "journey", label: "Journey", code: "04" },
-  { id: "credentials", label: "Credentials", code: "·" },
-  { id: "skills", label: "Skills", code: "05" },
-  { id: "github", label: "GitHub", code: "06" },
-  { id: "contact", label: "Contact", code: "07" },
-];
+/** Chip appears once the reader has scrolled past this fraction of the page. */
+const SHOW_AFTER = 0.04;
 
 export function TelemetryChip() {
+  const activeId = useActiveSection();
   const [visible, setVisible] = useState(false);
-  const [current, setCurrent] = useState(SECTIONS[0]);
-  const [progress, setProgress] = useState(0);
+  const pctRef = useRef<HTMLSpanElement>(null);
+  const barRef = useRef<HTMLSpanElement>(null);
+  const lastPct = useRef(-1);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const scrolled = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(height > 0 ? Math.min(100, (scrolled / height) * 100) : 0);
-      setVisible(scrolled > 420);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  useScrollProgress((p) => {
+    const pct = Math.round(p * 100);
+    setVisible(p > SHOW_AFTER);
+    if (barRef.current) gsap.set(barRef.current, { scaleX: p });
+    if (pct !== lastPct.current && pctRef.current) {
+      lastPct.current = pct;
+      pctRef.current.textContent = pct.toString().padStart(2, "0");
+    }
+  });
 
-  useEffect(() => {
-    const elements = SECTIONS.map((s) => ({
-      section: s,
-      el: document.getElementById(s.id),
-    })).filter((x): x is { section: (typeof SECTIONS)[number]; el: HTMLElement } => !!x.el);
-
-    if (elements.length === 0) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // pick the entry most-in-view
-        let best: IntersectionObserverEntry | null = null;
-        for (const e of entries) {
-          if (!best || e.intersectionRatio > best.intersectionRatio) {
-            best = e;
-          }
-        }
-        if (!best || !best.isIntersecting) return;
-        const hit = elements.find((x) => x.el === best!.target);
-        if (hit) setCurrent(hit.section);
-      },
-      {
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      },
-    );
-
-    elements.forEach((x) => observer.observe(x.el));
-    return () => observer.disconnect();
-  }, []);
+  const section = sectionById(activeId as SectionId);
 
   return (
     <div
@@ -78,20 +44,20 @@ export function TelemetryChip() {
 
         {/* Section */}
         <div className="flex items-center gap-2 px-3 py-1.5">
-          <span className="text-accent tabular-nums">§{current.code}</span>
-          <span className="text-fg">{current.label}</span>
+          <span className="text-accent tabular-nums">§{chapterNumber(section.id)}</span>
+          <span className="text-fg">{section.label}</span>
         </div>
 
         {/* Progress segment */}
         <div className="relative flex items-center border-l border-border/80 bg-surface-2/60 px-3 py-1.5">
           <span className="tabular-nums text-fg">
-            {progress.toFixed(0).padStart(2, "0")}
+            <span ref={pctRef}>00</span>
             <span className="text-fg-subtle">%</span>
           </span>
           <span
+            ref={barRef}
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-[2px] bg-accent/80"
-            style={{ width: `${progress}%` }}
+            className="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-accent/80"
           />
         </div>
       </div>

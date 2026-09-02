@@ -6,10 +6,9 @@ import { CraftEditor } from "./craft-editor";
 export function Craft() {
   return (
     <section id="craft" className="py-24 md:py-32">
-      <Reveal>
+      <Reveal preset="header">
         <SectionHeader
-          number="03"
-          label="Craft"
+          id="craft"
           title="Two windows open at any given time."
           sub="The work happens in two places: a terminal hunting weak signals, and an editor turning those lessons into typed, tested code."
         />

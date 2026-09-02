@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
 import { Reveal } from "@/components/reveal";
 
 type SealPattern = "dashed" | "serrated" | "double" | "starburst" | "gear";
@@ -14,6 +11,7 @@ type Credential = {
   status: "active" | "current" | "contributor" | "shipped" | "ongoing";
   tilt: number;
   pattern: SealPattern;
+  href?: string;
 };
 
 const CREDENTIALS: Credential[] = [
@@ -41,8 +39,9 @@ const CREDENTIALS: Credential[] = [
     id: "betterauth",
     glyph: "BA",
     name: "Better Auth",
-    role: "Core contributor · plugins",
-    meta: "12+ PRs upstream",
+    role: "Contributor · upstream",
+    meta: "PR #2006 · merged",
+    href: "https://github.com/better-auth/better-auth/pull/2006",
     status: "contributor",
     tilt: -2,
     pattern: "serrated",
@@ -61,8 +60,8 @@ const CREDENTIALS: Credential[] = [
     id: "oss",
     glyph: "OS",
     name: "Open Source",
-    role: "Author · 4 plugins",
-    meta: "auth · waitlist · mw · MIT",
+    role: "Author · Better Auth plugins",
+    meta: "waitlist · middleware · MIT",
     status: "shipped",
     tilt: -3,
     pattern: "gear",
@@ -98,11 +97,14 @@ export function Credentials() {
           </div>
 
           {/* Seals row */}
-          <div className="relative grid grid-cols-2 gap-x-3 gap-y-8 p-6 sm:grid-cols-3 sm:gap-x-4 sm:p-8 md:px-10 md:py-12 lg:grid-cols-5">
-            {CREDENTIALS.map((c, i) => (
-              <SealTile key={c.id} credential={c} index={i} />
+          <Reveal
+            stagger={0.08}
+            className="relative grid grid-cols-2 gap-x-3 gap-y-8 p-6 sm:grid-cols-3 sm:gap-x-4 sm:p-8 md:px-10 md:py-12 lg:grid-cols-5"
+          >
+            {CREDENTIALS.map((c) => (
+              <SealTile key={c.id} credential={c} />
             ))}
-          </div>
+          </Reveal>
 
           {/* Bottom rail — signature + tag */}
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 bg-surface-2/30 px-5 py-2 font-mono text-[9px] uppercase tracking-[0.28em] text-fg-subtle">
@@ -119,7 +121,7 @@ export function Credentials() {
                 />
               ))}
             </span>
-            <span className="tabular-nums">rev · 2026.04</span>
+            <span className="tabular-nums">rev · 2026.09</span>
           </div>
         </div>
       </Reveal>
@@ -127,34 +129,24 @@ export function Credentials() {
   );
 }
 
-function SealTile({
-  credential,
-  index,
-}: {
-  credential: Credential;
-  index: number;
-}) {
-  const reduced = useReducedMotion();
-
+/**
+ * Tilt lives in a CSS variable so Tailwind's `rotate`/`scale` (independent
+ * transform properties) never fight GSAP's translate on the same element.
+ */
+function SealTile({ credential }: { credential: Credential }) {
   return (
-    <motion.div
+    <div
+      data-reveal-child=""
       className="group relative flex flex-col items-center text-center"
-      initial={reduced ? undefined : { opacity: 0, y: 16, rotate: credential.tilt }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0, rotate: credential.tilt }}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-        ease: [0.25, 1, 0.5, 1],
-      }}
     >
       {/* Seal */}
-      <motion.div
-        whileHover={reduced ? undefined : { scale: 1.06, rotate: 0 }}
-        transition={{ type: "spring", stiffness: 260, damping: 18 }}
-        className="relative"
+      <div
+        style={{ "--tilt": `${credential.tilt}deg` } as React.CSSProperties}
+        className="relative rotate-(--tilt) transition-[rotate,scale] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:rotate-0 group-hover:scale-[1.06]"
       >
-        <Seal glyph={credential.glyph} pattern={credential.pattern} />
+        <SealFrame href={credential.href} name={credential.name}>
+          <Seal glyph={credential.glyph} pattern={credential.pattern} />
+        </SealFrame>
 
         {/* Status pin */}
         <span
@@ -163,7 +155,7 @@ function SealTile({
         >
           {credential.status}
         </span>
-      </motion.div>
+      </div>
 
       {/* Caption */}
       <div className="mt-4 space-y-1">
@@ -183,7 +175,32 @@ function SealTile({
         aria-hidden
         className="absolute inset-x-0 -top-2 mx-auto h-px w-8 bg-accent/40"
       />
-    </motion.div>
+    </div>
+  );
+}
+
+/** Wraps a seal in a link when the credential has a verifiable source. */
+function SealFrame({
+  href,
+  name,
+  children,
+}: {
+  href?: string;
+  name: string;
+  children: React.ReactNode;
+}) {
+  if (!href) return <>{children}</>;
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${name} — view source`}
+      className="block rounded-full"
+    >
+      {children}
+    </a>
   );
 }
 

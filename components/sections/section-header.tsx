@@ -1,20 +1,29 @@
+import { Fragment } from "react";
+import {
+  chapterNumber,
+  chapterTotal,
+  sectionById,
+  type SectionId,
+} from "@/content";
+
 type Props = {
-  number: string;
-  total?: string;
-  label: string;
+  id: SectionId;
   title: string;
   sub?: string;
   meta?: React.ReactNode;
 };
 
-export function SectionHeader({
-  number,
-  total = "07",
-  label,
-  title,
-  sub,
-  meta,
-}: Props) {
+const BARCODE = [2, 1, 3, 1, 2, 1, 1, 4, 1, 2, 1, 3, 1, 1, 2, 5, 1, 2] as const;
+
+/**
+ * Numbered chapter header. Wrap in `<Reveal preset="header">` to get the
+ * line-draw / word-rise choreography; the data-* hooks below are its targets.
+ */
+export function SectionHeader({ id, title, sub, meta }: Props) {
+  const { label } = sectionById(id);
+  const number = chapterNumber(id);
+  const words = title.split(" ");
+
   return (
     <header className="mb-14 md:mb-20">
       {/* Top rail: classification strip */}
@@ -24,6 +33,7 @@ export function SectionHeader({
         </span>
         <span
           aria-hidden
+          data-line=""
           className="h-px flex-1 bg-[repeating-linear-gradient(to_right,currentColor_0_4px,transparent_4px_8px)] text-border/80"
         />
         <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-fg-subtle tabular-nums">
@@ -33,7 +43,7 @@ export function SectionHeader({
 
       <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,220px)_1fr] md:items-end">
         {/* Oversized numeral block */}
-        <div className="relative">
+        <div className="relative" data-numeral="">
           <div className="flex items-start gap-1 font-display font-semibold leading-[0.82] tracking-tighter">
             <span
               aria-hidden
@@ -42,7 +52,7 @@ export function SectionHeader({
               {number}
             </span>
             <span className="mt-2 rotate-[8deg] font-mono text-xs text-fg-subtle">
-              /{total}
+              /{chapterTotal}
             </span>
           </div>
           {/* Registration mark */}
@@ -62,52 +72,51 @@ export function SectionHeader({
         {/* Title block */}
         <div className="space-y-4">
           <h2 className="font-display text-3xl font-medium leading-[1.05] tracking-tight text-fg md:text-[44px] max-w-[22ch]">
-            {title.split(" ").map((word, i, arr) => {
-              const isLast = i === arr.length - 1;
-              const italic = i === Math.floor(arr.length / 2);
+            {words.map((word, i) => {
+              const isLast = i === words.length - 1;
+              const italic = i === Math.floor(words.length / 2);
+              const tone = italic
+                ? "italic font-light text-fg-muted"
+                : isLast
+                  ? "text-accent"
+                  : "";
               return (
-                <span
-                  key={i}
-                  className={
-                    italic
-                      ? "italic font-light text-fg-muted"
-                      : isLast
-                        ? "text-accent"
-                        : undefined
-                  }
-                >
-                  {word}
-                  {i < arr.length - 1 && " "}
-                </span>
+                <Fragment key={i}>
+                  <span className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom">
+                    <span data-word="" className={`inline-block ${tone}`}>
+                      {word}
+                    </span>
+                  </span>
+                  {i < words.length - 1 && " "}
+                </Fragment>
               );
             })}
           </h2>
 
           {/* Barcode rule */}
-          <div
-            aria-hidden
-            className="flex items-center gap-[3px] opacity-70"
-          >
-            {[2, 1, 3, 1, 2, 1, 1, 4, 1, 2, 1, 3, 1, 1, 2, 5, 1, 2].map(
-              (w, i) => (
-                <span
-                  key={i}
-                  className="h-2 bg-fg-subtle"
-                  style={{ width: `${w * 2}px` }}
-                />
-              ),
-            )}
+          <div aria-hidden className="flex items-center gap-[3px] opacity-70">
+            {BARCODE.map((w, i) => (
+              <span
+                key={i}
+                data-bar=""
+                className="h-2 bg-fg-subtle"
+                style={{ width: `${w * 2}px` }}
+              />
+            ))}
             <span className="ml-2 font-mono text-[9px] tracking-[0.3em] text-fg-subtle">
-              §{number}·{total}
+              §{number}·{chapterTotal}
             </span>
           </div>
 
           {sub && (
-            <p className="max-w-[62ch] text-base leading-relaxed text-fg-muted md:text-lg">
+            <p
+              data-sub=""
+              className="max-w-[62ch] text-base leading-relaxed text-fg-muted md:text-lg"
+            >
               {sub}
             </p>
           )}
-          {meta}
+          {meta && <div data-sub="">{meta}</div>}
         </div>
       </div>
     </header>

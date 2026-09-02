@@ -1,41 +1,46 @@
 "use client";
 
-import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
-import { type ReactNode } from "react";
+import { useRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useReveal, type RevealPreset } from "@/hooks/use-reveal";
+
+type RevealTag = "div" | "section" | "article" | "header" | "footer" | "li";
 
 type RevealProps = {
   children: ReactNode;
   delay?: number;
   y?: number;
+  /** Animate `[data-reveal-child]` descendants with this stagger instead of the wrapper. */
+  stagger?: number;
+  selector?: string;
+  preset?: RevealPreset;
   className?: string;
-  as?: "div" | "section" | "article" | "header" | "footer" | "li";
-} & Omit<HTMLMotionProps<"div">, "children" | "initial" | "whileInView" | "viewport" | "transition">;
+  as?: RevealTag;
+} & Omit<ComponentPropsWithoutRef<"div">, "children" | "className">;
 
+/**
+ * Fade-up on scroll. Hidden by CSS until GSAP reveals it; with
+ * prefers-reduced-motion the CSS rule doesn't apply and nothing runs.
+ */
 export function Reveal({
   children,
-  delay = 0,
-  y = 8,
+  delay,
+  y,
+  stagger,
+  selector,
+  preset,
   className,
   as = "div",
   ...rest
 }: RevealProps) {
-  const reduced = useReducedMotion();
-  const MotionTag = motion[as] as typeof motion.div;
+  const ref = useRef<HTMLDivElement>(null);
+  useReveal(ref, { delay, y, stagger, selector, preset });
 
-  if (reduced) {
-    return <MotionTag className={className} {...rest}>{children}</MotionTag>;
-  }
+  // Every allowed tag is an HTMLElement; narrowing to "div" keeps the ref type simple.
+  const Tag = as as "div";
 
   return (
-    <MotionTag
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1], delay }}
-      {...rest}
-    >
+    <Tag ref={ref} data-reveal="" className={className} {...rest}>
       {children}
-    </MotionTag>
+    </Tag>
   );
 }

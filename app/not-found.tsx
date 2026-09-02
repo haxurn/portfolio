@@ -36,10 +36,10 @@ export default function NotFound() {
               status · 404 · no route
             </div>
             <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight text-fg md:text-6xl">
-              This page isn't on the map.
+              This page isn&apos;t on the map.
             </h1>
             <p className="mx-auto mt-4 max-w-md text-base text-fg-muted md:text-lg">
-              The URL you followed doesn't resolve. The route was renamed, retired,
+              The URL you followed doesn&apos;t resolve. The route was renamed, retired,
               or never existed — pick a direction and try again.
             </p>
 
@@ -72,7 +72,7 @@ export default function NotFound() {
 
         {/* Bottom rail */}
         <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-2 font-mono text-[9px] uppercase tracking-[0.28em] text-fg-subtle">
-          <span>// stack trace suppressed</span>
+          <span>{"// stack trace suppressed"}</span>
           <span>retry · 0</span>
         </div>
       </div>

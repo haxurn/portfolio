@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import Head from "next/head";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { SiteHeader } from "@/components/site-header";
 import { SiteBackground } from "@/components/background";
+import { GsapRoot } from "@/components/gsap-root";
 import { TelemetryChip } from "@/components/telemetry-chip";
 import { ShortcutsOverlay } from "@/components/shortcuts-overlay";
 import { HiddenCLI } from "@/components/hidden-cli";
@@ -60,9 +60,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://api.fontshare.com" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=syne@500,600,700,800&display=swap" rel="stylesheet" />
+        {/* Without JS nothing can reveal the [data-reveal] elements — show them. */}
+        <noscript>
+          <style>{`[data-reveal],[data-reveal-child],[data-hero]{visibility:visible!important}`}</style>
+        </noscript>
       </head>
       <body className="min-h-screen antialiased">
         <ThemeProvider>
+          <GsapRoot />
           <SiteBackground />
 
           <a
@@ -128,8 +133,8 @@ async function SiteFooter() {
             <Cell k="build" v={sha} />
             <Cell k="deployed" v={buildTime} />
             <Cell k="region" v="iad1" />
-            <Cell k="stack" v="next 16 · tw v4" />
-            <Cell k="theme" v="dark · amber-green" />
+            <Cell k="stack" v="next 16 · tw v4 · gsap" />
+            <Cell k="theme" v="dark · electric green" />
           </div>
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border/60 bg-bg/40 px-4 py-2 text-fg-subtle">
             <span>© {year} {profile.name} — all rights, quietly reserved</span>

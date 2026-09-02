@@ -1,11 +1,13 @@
 import { Reveal } from "@/components/reveal";
+import { CounterValue } from "@/components/counter-value";
+import { countByType, profile, projects } from "@/content";
 import {
   Code2,
   ShieldAlert,
   GitPullRequest,
   Puzzle,
   Terminal,
-  Braces,
+  Globe,
 } from "lucide-react";
 
 type Signal = {
@@ -13,15 +15,26 @@ type Signal = {
   label: string;
   value: string;
   hint: string;
+  /** Static text (no counter) when the value has no leading number. */
+  count?: boolean;
 };
 
+const shippedSites = projects.filter((p) => p.type === "project" && p.image).length;
+const plugins = countByType("plugin");
+
 const signals: Signal[] = [
-  { icon: Code2, label: "Years coding", value: "3", hint: "since 2024" },
-  { icon: ShieldAlert, label: "Years on security", value: "3", hint: "INSA · 2023→" },
-  { icon: GitPullRequest, label: "PRs upstream", value: "12+", hint: "Better Auth ecosystem" },
-  { icon: Puzzle, label: "Plugins shipped", value: "4", hint: "auth · waitlist · mw" },
-  { icon: Terminal, label: "CTF solves", value: "80+", hint: "web · crypto · pwn" },
-  { icon: Braces, label: "TS stack", value: "Hono·Next", hint: "strict mode only" },
+  { icon: Code2, label: "Years coding", value: "3", hint: "since 2024", count: true },
+  { icon: ShieldAlert, label: "Years on security", value: "3", hint: "INSA · 2023→", count: true },
+  {
+    icon: GitPullRequest,
+    label: "PRs upstream",
+    value: String(profile.upstream.mergedPrs),
+    hint: `merged · ${profile.upstream.repos} projects`,
+    count: true,
+  },
+  { icon: Globe, label: "Sites shipped", value: String(shippedSites), hint: "live · with clients", count: true },
+  { icon: Puzzle, label: "Plugins", value: String(plugins), hint: "better auth · npm", count: true },
+  { icon: Terminal, label: "CTF solves", value: "80+", hint: "web · crypto · pwn", count: true },
 ];
 
 export function SignalsStrip() {
@@ -35,8 +48,10 @@ export function SignalsStrip() {
               <span className="size-1 rounded-full bg-accent animate-pulse" />
               signals · intake
             </span>
-            <span className="hidden sm:block">06 indicators · live</span>
-            <span>updated · 2026·04</span>
+            <span className="hidden sm:block">
+              {signals.length.toString().padStart(2, "0")} indicators · live
+            </span>
+            <span>updated · 2026·09</span>
           </div>
 
           {/* accent stripe */}
@@ -65,7 +80,7 @@ export function SignalsStrip() {
                 </div>
 
                 <div className="flex items-baseline gap-1 font-display text-xl font-semibold text-fg tabular-nums tracking-tight sm:text-2xl lg:text-3xl">
-                  {s.value}
+                  {s.count ? <CounterValue value={s.value} /> : s.value}
                   <span className="text-[10px] font-normal text-accent/60">◆</span>
                 </div>
 

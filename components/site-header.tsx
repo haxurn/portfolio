@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { CommandPaletteTrigger } from "@/components/command-palette";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { profile } from "@/content";
+import { chapters, profile, sections } from "@/content";
+import { useActiveSection } from "@/hooks/use-active-section";
+import { useScrollProgress } from "@/hooks/use-scroll-progress";
+import { gsap } from "@/lib/gsap/register";
 
-const navItems = [
-  { href: "#home", label: "Home", short: "home" },
-  { href: "#about", label: "About", short: "about" },
-  { href: "#projects", label: "Projects", short: "projects" },
-  { href: "#craft", label: "Craft", short: "craft" },
-  { href: "#journey", label: "Journey", short: "journey" },
-  { href: "#skills", label: "Skills", short: "skills" },
-  { href: "#github", label: "GitHub", short: "github" },
-  { href: "#contact", label: "Contact", short: "contact" },
-] as const;
-
-type SectionId = (typeof navItems)[number]["short"];
+/** Nav shows chapters only; interstitials resolve to the chapter above them. */
+function activeChapterIndex(activeId: string): number {
+  const position = sections.findIndex((s) => s.id === activeId);
+  const chapterIds = chapters.map((c) => c.id);
+  for (let i = position; i >= 0; i -= 1) {
+    const idx = chapterIds.indexOf(sections[i].id);
+    if (idx !== -1) return idx;
+  }
+  return 0;
+}
 
 export function SiteHeader() {
-  const [active, setActive] = useState<SectionId>("home");
-  const [scrollPct, setScrollPct] = useState(0);
+  const activeId = useActiveSection();
   const [menuOpen, setMenuOpen] = useState(false);
-  const rafRef = useRef<number | null>(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   // Close the mobile menu on Escape and lock body scroll while open.
   useEffect(() => {
@@ -40,48 +40,15 @@ export function SiteHeader() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) {
-          const id = visible[0].target.id as SectionId;
-          if (id) setActive(id);
-        }
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
-    );
-    for (const { short } of navItems) {
-      const el = document.getElementById(short);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
-  }, []);
+  // Progress bar: transform only, no React state, no CSS transition to fight.
+  useScrollProgress((p) => {
+    if (barRef.current) gsap.set(barRef.current, { scaleX: p });
+  });
 
-  useEffect(() => {
-    const onScroll = () => {
-      if (rafRef.current) return;
-      rafRef.current = requestAnimationFrame(() => {
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
-        const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
-        setScrollPct(Math.min(100, Math.max(0, pct)));
-        rafRef.current = null;
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const activeIndex = Math.max(
-    0,
-    navItems.findIndex((i) => i.short === active),
-  );
-  const total = navItems.length;
-  const activeLabel = navItems[activeIndex]?.label ?? "Home";
+  const activeIndex = activeChapterIndex(activeId);
+  const total = chapters.length;
+  const activeLabel = chapters[activeIndex]?.label ?? "Home";
+  const activeChapterId = chapters[activeIndex]?.id;
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-bg/70 backdrop-blur-md supports-[backdrop-filter]:bg-bg/55">
@@ -113,7 +80,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-2 tabular-nums">
             <span>uptime 3y</span>
             <span className="text-border">·</span>
-            <span>v2026.04</span>
+            <span>v2026.09</span>
           </div>
         </div>
       </div>
@@ -129,12 +96,12 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-0.5" aria-label="Primary">
-          {navItems.slice(1, -1).map((item) => {
-            const isActive = active === item.short;
+          {chapters.slice(1, -1).map((item) => {
+            const isActive = activeChapterId === item.id;
             return (
               <a
-                key={item.href}
-                href={item.href}
+                key={item.id}
+                href={`#${item.id}`}
                 className={`relative rounded-md px-2.5 py-1.5 text-sm transition-colors ${
                   isActive
                     ? "text-fg"
@@ -177,12 +144,12 @@ export function SiteHeader() {
           aria-label="Mobile"
           className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-1 px-4 py-4 sm:px-6"
         >
-          {navItems.map((item, i) => {
-            const isActive = active === item.short;
+          {chapters.map((item, i) => {
+            const isActive = activeChapterId === item.id;
             return (
               <a
-                key={item.href}
-                href={item.href}
+                key={item.id}
+                href={`#${item.id}`}
                 onClick={() => setMenuOpen(false)}
                 className={`flex items-center gap-2.5 rounded-md px-3 py-3 font-mono text-sm transition-colors ${
                   isActive
@@ -201,13 +168,10 @@ export function SiteHeader() {
       </div>
 
       {/* scroll progress */}
-      <div
-        className="h-px w-full overflow-hidden bg-transparent"
-        aria-hidden
-      >
+      <div className="h-px w-full overflow-hidden bg-transparent" aria-hidden>
         <div
-          className="h-full bg-gradient-to-r from-accent via-accent/80 to-accent/40 transition-[width] duration-100 ease-out"
-          style={{ width: `${scrollPct}%` }}
+          ref={barRef}
+          className="h-full w-full origin-left scale-x-0 bg-gradient-to-r from-accent via-accent/80 to-accent/40"
         />
       </div>
     </header>

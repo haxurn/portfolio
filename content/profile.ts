@@ -14,6 +14,8 @@ export type Profile = {
   timezone: string;
   email: string;
   focus: string;
+  /** Merged pull requests on repositories I don't own. Verified via `gh search prs --author haxurn --merged`. */
+  upstream: { mergedPrs: number; repos: number };
   socials: {
     github: Social;
     instagram: Social;
@@ -35,7 +37,8 @@ export const profile: Profile = {
   location: "Addis Ababa, Ethiopia",
   timezone: "Africa/Addis_Ababa",
   email: "haxurn@gmail.com",
-  focus: "Engineer @ Solvix Labs · building in private",
+  focus: "Engineer @ Solvix Labs · building Axova",
+  upstream: { mergedPrs: 6, repos: 4 },
   socials: {
     github: {
       handle: "haxurn",

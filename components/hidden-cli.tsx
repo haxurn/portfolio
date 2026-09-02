@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useEffectEvent } from "react";
 import { profile } from "@/content";
 
 type Line = {
@@ -49,6 +49,8 @@ export function HiddenCLI() {
     requestAnimationFrame(() => inputRef.current?.focus());
   };
 
+  const onOpenShortcut = useEffectEvent(() => openShell());
+
   useEffect(() => {
     const isEditable = (t: EventTarget | null) => {
       if (!(t instanceof HTMLElement)) return false;
@@ -60,7 +62,7 @@ export function HiddenCLI() {
       if (isEditable(e.target)) return;
       if (e.key === "/" && !open) {
         e.preventDefault();
-        openShell();
+        onOpenShortcut();
       } else if (e.key === "Escape" && open) {
         setOpen(false);
       }
@@ -246,7 +248,7 @@ export function HiddenCLI() {
                 <div className="text-danger">{line.text}</div>
               )}
               {line.kind === "note" && (
-                <div className="text-fg-subtle">// {line.text}</div>
+                <div className="text-fg-subtle">{`// ${line.text}`}</div>
               )}
             </div>
           ))}

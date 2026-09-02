@@ -1,17 +1,27 @@
 import { Github, Star, BookOpen, Users, ExternalLink } from "lucide-react";
 import { Suspense } from "react";
+import { CounterValue } from "@/components/counter-value";
 import { getGitHubStats } from "@/lib/github";
 import { profile } from "@/content";
 
+async function loadStats(username: string) {
+  try {
+    return await getGitHubStats(username);
+  } catch {
+    return null;
+  }
+}
+
 async function GitHubInner() {
   const username = profile.socials.github.handle;
-  try {
-    const stats = await getGitHubStats(username);
-    // Normalize top-language % into a decorative sparkline.
-    const values = stats.topLanguages.slice(0, 8).map((l) => l.count);
-    const max = Math.max(...values, 1);
+  const stats = await loadStats(username);
+  if (!stats) return <GitHubFallback />;
 
-    return (
+  // Normalize top-language % into a decorative sparkline.
+  const values = stats.topLanguages.slice(0, 8).map((l) => l.count);
+  const max = Math.max(...values, 1);
+
+  return (
       <>
         <Header
           avatar={stats.login.charAt(0).toUpperCase()}
@@ -63,10 +73,7 @@ async function GitHubInner() {
           </div>
         )}
       </>
-    );
-  } catch {
-    return <GitHubFallback />;
-  }
+  );
 }
 
 function Header({
@@ -155,7 +162,7 @@ function Stat({
         {label}
       </div>
       <div className="mt-0.5 font-display text-lg font-semibold text-fg tabular-nums">
-        {value.toLocaleString()}
+        <CounterValue value={String(value)} start={null} delay={0.9} />
       </div>
     </div>
   );

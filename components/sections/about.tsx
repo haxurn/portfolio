@@ -5,10 +5,9 @@ import { profile } from "@/content";
 export function About() {
   return (
     <section id="about" className="py-24 md:py-32">
-      <Reveal>
+      <Reveal preset="header">
         <SectionHeader
-          number="01"
-          label="About"
+          id="about"
           title="Hacker by day, producer by night."
         />
       </Reveal>
@@ -17,7 +16,7 @@ export function About() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[200px_1fr]">
           {/* Dossier side panel */}
           <aside className="relative">
-            <div className="space-y-4 md:sticky md:top-28">
+            <div className="space-y-4 md:sticky md:top-(--sticky-offset)">
               <div className="rounded-md border border-border bg-surface/60 p-4 shadow-card">
                 <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
                   ◉ subject
