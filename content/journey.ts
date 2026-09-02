@@ -28,6 +28,13 @@ export const journey: readonly JourneyEntry[] = [
       "I wrote my first real programs in Python and committed to capture-the-flag competitions: reverse engineering, cryptography, and binary exploitation. Being able to automate the work changed how much of it I could do.",
   },
   {
+    date: "2024",
+    rawDate: "2024-03",
+    title: "Red team at INSA",
+    body:
+      "I began working on INSA's red team: authorised offensive engagements, web application testing and reporting findings so they could be fixed. Testing systems for a living is where my security practice became professional.",
+  },
+  {
     date: "2024 / mid",
     rawDate: "2024-06",
     title: "Moved into TypeScript development",
