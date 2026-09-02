@@ -30,7 +30,7 @@ const CREDENTIALS: Credential[] = [
     glyph: "SL",
     name: "Solvix Labs PLC",
     role: "Co-founder · engineer · Axova",
-    meta: "2026 → now",
+    meta: "founded 2024 → now",
     status: "current",
     tilt: 3,
     pattern: "double",

@@ -35,10 +35,10 @@ export const journey: readonly JourneyEntry[] = [
       "I shifted my focus to software development: TypeScript across the stack, with React, Next.js, and Hono. In the same period I began contributing to Better Auth and building plugins for its ecosystem.",
   },
   {
-    date: "2026 / now",
-    rawDate: "2026",
+    date: "2024 → now",
+    rawDate: "2024-09",
     title: "Co-founded Solvix Labs PLC",
     body:
-      "I co-founded Solvix Labs PLC, where we build Axova, a unified commerce platform for Ethiopia. The work is TypeScript end to end and security-minded by default: I now ship the systems I once only tested.",
+      "In 2024 I co-founded Solvix Labs PLC, where we build Axova, a unified commerce platform for Ethiopia. The work is TypeScript end to end and security-minded by default: I now ship the systems I once only tested.",
   },
 ] as const;
