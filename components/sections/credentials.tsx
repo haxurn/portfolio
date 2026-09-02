@@ -20,7 +20,7 @@ const CREDENTIALS: Credential[] = [
     glyph: "IS",
     name: "INSA",
     role: "Information Network Security · analyst",
-    meta: "since 2023 · grade 9 entry",
+    meta: "since 2023 · analyst",
     status: "active",
     tilt: -4,
     pattern: "dashed",

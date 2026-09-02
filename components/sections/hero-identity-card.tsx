@@ -110,7 +110,7 @@ export function HeroIdentityCard() {
             <span className="size-1 rounded-full bg-accent" /> addis ababa · ET
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="size-1 rounded-full bg-accent/70" /> age 18
+            <span className="size-1 rounded-full bg-accent/70" /> security · since 2023
           </span>
           <span className="flex items-center gap-1.5">
             <span className="size-1 rounded-full bg-accent/50" /> stack · ts-first

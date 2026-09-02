@@ -31,7 +31,7 @@ export const profile: Profile = {
     "Security engineer and full-stack developer, co-founder of Solvix Labs PLC, and a music producer in training.",
   bio: [
     "My name is Sami, and online I go by Haxurn. I am a security engineer and full-stack developer based in Addis Ababa. Most of my week is spent reading binaries, writing TypeScript, and looking for the small improvements that make a system safer or an interface calmer.",
-    "I joined the Information Network Security Administration in 2023, while still in grade 9, and learned the discipline from analysts who had practised it for a decade. In early 2024 I began programming in Python and competing in capture-the-flag events. By the middle of that year I had moved into full-time TypeScript development.",
+    "I joined the Information Network Security Administration in 2023 and learned the discipline from analysts who had practised it for a decade. In early 2024 I began programming in Python and competing in capture-the-flag events. By the middle of that year I had moved into full-time TypeScript development.",
     "Today I am co-founder and engineer at Solvix Labs PLC, where we build Axova, a unified commerce platform for Ethiopian merchants. Alongside that work I author and maintain plugins for the Better Auth ecosystem and contribute to open-source projects.",
   ],
   location: "Addis Ababa, Ethiopia",

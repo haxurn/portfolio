@@ -11,7 +11,7 @@ export const journey: readonly JourneyEntry[] = [
     rawDate: "2023",
     title: "Joined INSA",
     body:
-      "I joined the Information Network Security Administration while still in grade 9. As the youngest person in the room, I learned security practice from analysts with a decade of experience.",
+      "I joined the Information Network Security Administration and learned security practice from analysts with a decade of experience.",
   },
   {
     date: "2024 / early",
