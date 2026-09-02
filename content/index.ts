@@ -22,4 +22,14 @@ export {
   type SectionKind,
 } from "./sections";
 export { skills, type Skill, type SkillGroup } from "./skills";
+export {
+  stack,
+  stackGroups,
+  stackByGroup,
+  stackIconUrl,
+  STACK_ICON_CDN,
+  type StackItem,
+  type StackGroup,
+  type StackGroupId,
+} from "./stack";
 export { journey, type JourneyEntry } from "./journey";

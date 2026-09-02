@@ -19,6 +19,7 @@ export const sections: readonly Section[] = [
   { id: "journey", label: "Journey", kind: "chapter" },
   { id: "credentials", label: "Credentials", kind: "interstitial" },
   { id: "skills", label: "Skills", kind: "chapter" },
+  { id: "stack", label: "Stack", kind: "chapter" },
   { id: "github", label: "GitHub", kind: "chapter" },
   { id: "contact", label: "Contact", kind: "chapter" },
 ] as const;

@@ -42,6 +42,7 @@ describe("sections registry", () => {
       "journey.tsx",
       "credentials.tsx",
       "skills.tsx",
+      "stack.tsx",
       "contribution-heatmap.tsx",
       "contact.tsx",
     ]

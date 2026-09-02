@@ -7,6 +7,7 @@ import { Craft } from "@/components/sections/craft";
 import { Journey } from "@/components/sections/journey";
 import { Credentials } from "@/components/sections/credentials";
 import { Skills } from "@/components/sections/skills";
+import { Stack } from "@/components/sections/stack";
 import { ContributionHeatmapSection } from "@/components/sections/contribution-heatmap";
 import { Contact } from "@/components/sections/contact";
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Journey />
       <Credentials />
       <Skills />
+      <Stack />
       <ContributionHeatmapSection />
       <Contact />
     </>
