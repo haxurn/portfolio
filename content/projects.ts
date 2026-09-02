@@ -38,9 +38,9 @@ export const projects: readonly Project[] = [
     slug: "yes-multimedia",
     title: "YES Multimedia",
     summary:
-      "Site for a full-cycle film and video production house in Addis Ababa.",
+      "Website for a full-service film and video production company in Addis Ababa.",
     description:
-      "Television, commercials, music videos and multi-camera live broadcast — one studio, seven disciplines. The site is cinema-first: film stills lead every fold, serif display type carries the voice, and the work index is built so a producer can reach a reel in one tap.",
+      "YES Multimedia produces television, commercials, music videos, and multi-camera live broadcasts. I designed and built a site that puts the work first: film stills lead every section, a serif display face carries the studio's voice, and the portfolio index lets a producer reach a showreel in a single tap.",
     stack: ["TypeScript", "Next.js", "Editorial design"],
     status: "shipped",
     type: "project",
@@ -65,9 +65,9 @@ export const projects: readonly Project[] = [
     slug: "axova",
     title: "Axova",
     summary:
-      "The unified commerce system for Ethiopia — storefront, POS, marketplace, delivery.",
+      "A unified commerce platform for Ethiopia: online storefront, point of sale, marketplace, and delivery.",
     description:
-      "The product we build at Solvix Labs PLC, the company I co-founded. Merchants open a store in minutes, sell in person through Axova POS, reach shoppers on Axova Market and ship through Axova Go — one account, every channel. I build across the web app and the platform underneath it.",
+      "Axova is the product we build at Solvix Labs PLC, the company I co-founded. Merchants open a store in minutes, sell in person through Axova POS, reach customers on Axova Market, and ship through Axova Go, all from one account. I work across the web application and the platform beneath it.",
     stack: ["TypeScript", "Next.js", "Commerce", "Monorepo"],
     status: "ongoing",
     type: "project",
@@ -85,9 +85,9 @@ export const projects: readonly Project[] = [
     slug: "mamy-opticians",
     title: "Mamy Opticians",
     summary:
-      "Storefront for a Kenyan eyewear retailer — three brands, one checkout.",
+      "E-commerce storefront for a Kenyan eyewear retailer with three brands and a single checkout.",
     description:
-      "An eyewear storefront built around the frames rather than the chrome: full-bleed editorial hero, three brand tiers in one catalogue, and a checkout that stays out of the way. Shipped and serving customers across Kenya.",
+      "An eyewear storefront designed around the frames rather than the interface: a full-bleed editorial hero, three brand tiers in one catalogue, and a checkout that stays out of the way. The site is live and serving customers across Kenya.",
     stack: ["TypeScript", "Next.js", "E-commerce"],
     status: "shipped",
     type: "project",
@@ -107,9 +107,9 @@ export const projects: readonly Project[] = [
     slug: "geezsec",
     title: "Geez Security",
     summary:
-      "Cybersecurity academy for Ethiopia — certifications, course modules, bilingual.",
+      "Bilingual cybersecurity academy for Ethiopia with certification tracks and course modules.",
     description:
-      "A training platform teaching security in Amharic and English: certification tracks, module-by-module progress, and embedded lab video. Built for people learning the field where I learned it.",
+      "A training platform that teaches security in Amharic and English, with certification tracks, module-by-module progress tracking, and embedded lab video. I built it for people learning the field in the same place I learned it.",
     stack: ["TypeScript", "Next.js", "Security education"],
     status: "shipped",
     type: "project",
@@ -129,9 +129,9 @@ export const projects: readonly Project[] = [
     slug: "mstradingx",
     title: "M_S Trading",
     summary:
-      "Forex education and mentorship — structure, risk management, market psychology.",
+      "Forex education and mentorship platform covering market structure, risk management, and trading psychology.",
     description:
-      "A mentorship-focused trading school: programs, a published curriculum, and a process page that sets expectations before anyone pays. Clean, light, and built to convert serious learners rather than gamblers.",
+      "A mentorship-focused trading school with published programmes, a full curriculum, and a process page that sets expectations before anyone enrols. The design is light and restrained, built to speak to serious learners.",
     stack: ["TypeScript", "Next.js", "Education"],
     status: "shipped",
     type: "project",
@@ -151,9 +151,9 @@ export const projects: readonly Project[] = [
     slug: "better-middleware",
     title: "better-middleware",
     summary:
-      "Framework-agnostic auth middleware for Better Auth — session validation, smart caching, structured errors.",
+      "Framework-agnostic authentication middleware for Better Auth with session validation, caching, and typed errors.",
     description:
-      "Plug-in middleware that wraps any backend (Hono, Fastify, Express, Next route handlers) with Better Auth session validation. Caches sessions safely, fails loudly with typed errors, and never leaks tokens.",
+      "Middleware that adds Better Auth session validation to any backend, including Hono, Fastify, Express, and Next.js route handlers. It caches sessions safely, fails with explicit typed errors, and never exposes tokens.",
     stack: ["TypeScript", "Better Auth", "Security"],
     status: "ongoing",
     type: "plugin",
@@ -167,9 +167,9 @@ export const projects: readonly Project[] = [
     slug: "better-waitlist",
     title: "better-waitlist",
     summary:
-      "Drop-in waitlist plugin for Better Auth — email verification, queue control, referrals.",
+      "Waitlist plugin for Better Auth with email verification, queue management, and referrals.",
     description:
-      "A Better Auth plugin that turns sign-ups into a gated waitlist: verification emails, position tracking, referrals, and one-line admin invites. Ships with the types you'd expect from a first-party feature.",
+      "A Better Auth plugin that turns sign-ups into a managed waitlist: verification emails, queue position tracking, referral links, and one-line administrative invites. It ships with the type definitions you would expect from a first-party feature.",
     stack: ["TypeScript", "Better Auth", "Plugin"],
     status: "ongoing",
     type: "plugin",
@@ -186,7 +186,7 @@ export const projects: readonly Project[] = [
     summary:
       "Monorepo foundation for a suite of cybersecurity tools and shared packages.",
     description:
-      "The base I build security tooling on: one monorepo, shared architecture, reusable packages. Exists so each new CTF script or scanner starts from a standard instead of a blank file.",
+      "The base on which I build security tooling: one monorepo, a shared architecture, and reusable packages. It exists so that each new scanner or CTF utility starts from an established standard rather than an empty file.",
     stack: ["TypeScript", "Monorepo", "CTF"],
     status: "ongoing",
     type: "project",
@@ -200,9 +200,9 @@ export const projects: readonly Project[] = [
     slug: "better-hub",
     title: "better-hub",
     summary:
-      "Two merged PRs upstream on Better Auth's collaboration surface for humans and agents.",
+      "Two merged upstream pull requests on Better Auth's collaboration platform for humans and AI agents.",
     description:
-      "Upstream work on better-auth/better-hub, a collaboration surface designed for mixed human + AI-agent workflows. I added Firefox support to the browser extension across two merged pull requests.",
+      "Upstream contributions to better-auth/better-hub, a collaboration platform designed for mixed human and AI-agent workflows. Across two merged pull requests I added Firefox support to the browser extension, including download handling for both Chrome and Firefox.",
     stack: ["TypeScript", "Open Source", "Browser extension"],
     status: "shipped",
     type: "contribution",
@@ -217,9 +217,9 @@ export const projects: readonly Project[] = [
     slug: "chapa-nodejs",
     title: "chapa-nodejs",
     summary:
-      "Two merged PRs upstream on the Node SDK for Chapa, Ethiopia's payment gateway.",
+      "Two merged upstream pull requests on the Node.js SDK for Chapa, Ethiopia's payment gateway.",
     description:
-      "Upstream work on fireayehu/chapa-nodejs, the TypeScript SDK for Chapa. Refunds, typed error handling, a build system and tests — two merged pull requests on the library Ethiopian developers reach for when they wire up payments.",
+      "Upstream contributions to fireayehu/chapa-nodejs, the TypeScript SDK for Chapa. Across two merged pull requests I added refund support, typed error handling, a build system, and a test suite to the library Ethiopian developers rely on for payments.",
     stack: ["TypeScript", "Open Source", "Payments"],
     status: "shipped",
     type: "contribution",

@@ -8,7 +8,7 @@ export function About() {
       <Reveal preset="header">
         <SectionHeader
           id="about"
-          title="Hacker by day, producer by night."
+          title="Security engineer by day, producer by night."
         />
       </Reveal>
 

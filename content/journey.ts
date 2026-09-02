@@ -11,27 +11,27 @@ export const journey: readonly JourneyEntry[] = [
     rawDate: "2023",
     title: "Joined INSA",
     body:
-      "Started at the Information Network Security Administration while still in grade 9. Youngest in the room, learning from people who'd been doing this for a decade.",
+      "I joined the Information Network Security Administration while still in grade 9. As the youngest person in the room, I learned security practice from analysts with a decade of experience.",
   },
   {
     date: "2024 / early",
     rawDate: "2024-01",
-    title: "Started coding — Python + CTF",
+    title: "First code: Python and CTF",
     body:
-      "Wrote my first real scripts in Python. Went deep on CTFs and cybersecurity — reversing, crypto, binary exploitation. The work mattered more once I could automate it.",
+      "I wrote my first real programs in Python and committed to capture-the-flag competitions: reverse engineering, cryptography, and binary exploitation. Being able to automate the work changed how much of it I could do.",
   },
   {
     date: "2024 / mid",
     rawDate: "2024-06",
-    title: "Shifted to TypeScript",
+    title: "Moved into TypeScript development",
     body:
-      "Pivoted hard into development — TypeScript across the stack, React, Next.js, Hono. Started contributing to Better Auth and building plugins for its ecosystem.",
+      "I shifted my focus to software development: TypeScript across the stack, with React, Next.js, and Hono. In the same period I began contributing to Better Auth and building plugins for its ecosystem.",
   },
   {
     date: "2026 / now",
     rawDate: "2026",
-    title: "Co-founder, Solvix Labs PLC",
+    title: "Co-founded Solvix Labs PLC",
     body:
-      "Co-founded Solvix Labs PLC and build Axova there, the unified commerce system for Ethiopia. Security-minded, TypeScript end-to-end. Shipping code, not just exploiting it.",
+      "I co-founded Solvix Labs PLC, where we build Axova, a unified commerce platform for Ethiopia. The work is TypeScript end to end and security-minded by default: I now ship the systems I once only tested.",
   },
 ] as const;

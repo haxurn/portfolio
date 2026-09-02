@@ -8,7 +8,7 @@ export function Journey() {
       <Reveal preset="header">
         <SectionHeader
           id="journey"
-          title="A short timeline, long enough to matter."
+          title="A short timeline, with the milestones that matter."
         />
       </Reveal>
 

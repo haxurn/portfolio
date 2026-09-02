@@ -10,24 +10,24 @@ type Tenet = {
 const TENETS: Tenet[] = [
   {
     index: "I",
-    title: "Read the binary, then the spec.",
+    title: "Read the binary, then the specification.",
     glyph: "▚",
     body:
-      "Documents lie about intent. Bytes don't. Before I trust a system I read what it actually does — even when that takes a weekend and a debugger.",
+      "Documentation describes intent; the compiled code describes behaviour. Before I trust a system, I read what it actually does, even when that takes a weekend and a debugger.",
   },
   {
     index: "II",
-    title: "Exploit to understand. Ship to protect.",
+    title: "Exploit to understand. Build to protect.",
     glyph: "◈",
     body:
-      "Offense teaches geometry the defense never sees. I keep both hats within reach — but the code I write exists to close the doors, not open them.",
+      "Offensive work reveals structure that defenders rarely see. I keep both disciplines within reach, but the code I write exists to close doors, not to open them.",
   },
   {
     index: "III",
-    title: "Small discoveries, compounded.",
+    title: "Small improvements, compounded.",
     glyph: "✦",
     body:
-      "A better null-check. A clearer error. A plugin shipped on a quiet Sunday. The work stacks. The worth of a year is the honest sum of its smallest wins.",
+      "A stricter null check. A clearer error message. A plugin released on a quiet Sunday. The work accumulates, and the value of a year is the honest sum of its smallest wins.",
   },
 ];
 

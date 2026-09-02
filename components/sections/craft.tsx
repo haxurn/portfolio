@@ -10,7 +10,7 @@ export function Craft() {
         <SectionHeader
           id="craft"
           title="Two windows open at any given time."
-          sub="The work happens in two places: a terminal hunting weak signals, and an editor turning those lessons into typed, tested code."
+          sub="The work happens in two places: a terminal, where I look for weak signals, and an editor, where those lessons become typed and tested code."
         />
       </Reveal>
 

@@ -19,8 +19,8 @@ export function Projects() {
       <Reveal preset="header">
         <SectionHeader
           id="projects"
-          title="Things I've shipped, and where they live."
-          sub="Client sites carry a screenshot. Open-source rows say whether the repo is mine or a fork I sent work upstream to — the PR links are the receipt."
+          title="Selected work, and where it lives."
+          sub="Client sites are shown with a screenshot. Open-source entries state whether the repository is my own or a fork I contributed to upstream; the pull request links are the record."
           meta={
             <Link
               href={`https://github.com/${profile.socials.github.handle}`}

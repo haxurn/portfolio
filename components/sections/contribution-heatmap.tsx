@@ -202,8 +202,8 @@ export function ContributionHeatmapSection() {
       <Reveal preset="header">
         <SectionHeader
           id="github"
-          title="Every green cell was a small win."
-          sub="A year in commits. Cached for an hour, pulled live from the public profile."
+          title="Every green cell is a small win."
+          sub="A year of commits, pulled live from my public GitHub profile and cached for one hour."
         />
       </Reveal>
 

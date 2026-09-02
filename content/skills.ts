@@ -19,7 +19,7 @@ export const skills: readonly SkillGroup[] = [
   {
     id: "cybersecurity",
     title: "Cybersecurity",
-    tagline: "Day job.",
+    tagline: "Professional practice.",
     glyph: "◢",
     items: [
       {
@@ -27,7 +27,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Web penetration testing",
         pct: 90,
         since: 2023,
-        note: "Burp open, notes in the margin. Most findings start as a parameter that looked boring.",
+        note: "Methodical testing with Burp Suite and careful notes. Most of my findings begin with a parameter that looked unremarkable.",
         tags: ["burp", "recon", "authz"],
       },
       {
@@ -35,7 +35,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Web security",
         pct: 85,
         since: 2023,
-        note: "I would rather kill the bug class than patch the one instance of it.",
+        note: "I prefer to eliminate a class of vulnerability rather than patch a single instance of it.",
         tags: ["appsec", "threat-model", "code-review"],
       },
       {
@@ -43,7 +43,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Cryptography",
         pct: 75,
         since: 2024,
-        note: "Padding oracles and reused nonces taught me more than any textbook chapter.",
+        note: "Padding oracles and reused nonces taught me more than any textbook chapter did.",
         tags: ["ctf", "rsa", "aes"],
       },
       {
@@ -51,7 +51,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Reverse engineering",
         pct: 70,
         since: 2023,
-        note: "Ghidra open, coffee cold, reconstructing what the author meant to say.",
+        note: "Working in Ghidra to reconstruct what a program actually does, as opposed to what its documentation claims.",
         tags: ["ghidra", "static-analysis", "x86"],
       },
       {
@@ -59,7 +59,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Binary exploitation",
         pct: 60,
         since: 2024,
-        note: "Comfortable with a ROP chain. Still regularly humbled by modern mitigations.",
+        note: "Comfortable constructing ROP chains, and regularly reminded how effective modern mitigations are.",
         tags: ["pwn", "rop", "gdb"],
       },
     ],
@@ -67,7 +67,7 @@ export const skills: readonly SkillGroup[] = [
   {
     id: "programming",
     title: "Programming",
-    tagline: "Daily driver.",
+    tagline: "Primary tools.",
     glyph: "◤",
     items: [
       {
@@ -75,7 +75,7 @@ export const skills: readonly SkillGroup[] = [
         label: "TypeScript / JavaScript",
         pct: 92,
         since: 2024,
-        note: "Strict mode, no escape hatches. The types are the spec I write first.",
+        note: "Strict mode, no escape hatches. I write the types first and treat them as the specification.",
         tags: ["strict-mode", "zod", "better-auth"],
       },
       {
@@ -83,7 +83,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Python",
         pct: 90,
         since: 2024,
-        note: "First language I got fluent in. Still what I reach for when the clock is running.",
+        note: "The first language I became fluent in, and still my choice when time is short.",
         tags: ["scripting", "automation", "ctf-tooling"],
       },
       {
@@ -91,7 +91,7 @@ export const skills: readonly SkillGroup[] = [
         label: "React / Next.js",
         pct: 88,
         since: 2024,
-        note: "Server components by default. Client only where the DOM genuinely demands it.",
+        note: "Server components by default, with client components only where the DOM genuinely requires them.",
         tags: ["app-router", "rsc", "motion"],
       },
       {
@@ -99,7 +99,7 @@ export const skills: readonly SkillGroup[] = [
         label: "HTML / CSS",
         pct: 80,
         since: 2024,
-        note: "Semantic markup, token-driven Tailwind, focus states that actually exist.",
+        note: "Semantic markup, token-driven Tailwind, and focus states that are designed rather than left to the browser.",
         tags: ["tailwind-v4", "a11y", "layout"],
       },
       {
@@ -107,7 +107,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Hono",
         pct: 75,
         since: 2025,
-        note: "Small typed edges. Most of my backends start as a Hono router now.",
+        note: "Small, fully typed services. Most of my backends now begin as a Hono router.",
         tags: ["edge", "rpc", "middleware"],
       },
       {
@@ -115,7 +115,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Bash",
         pct: 70,
         since: 2023,
-        note: "Glue for everything else. Written quickly, read very slowly.",
+        note: "The glue between everything else. Written quickly and read with care.",
         tags: ["pipes", "tooling", "ci"],
       },
       {
@@ -123,7 +123,7 @@ export const skills: readonly SkillGroup[] = [
         label: "C / C++",
         pct: 65,
         since: 2024,
-        note: "I read far more of it than I write — usually to find out what breaks.",
+        note: "I read far more of it than I write, usually to understand where a program fails.",
         tags: ["memory", "source-dive", "pwn"],
       },
     ],
@@ -131,7 +131,7 @@ export const skills: readonly SkillGroup[] = [
   {
     id: "music",
     title: "Music production",
-    tagline: "Still learning.",
+    tagline: "In progress.",
     glyph: "◈",
     items: [
       {
@@ -139,7 +139,7 @@ export const skills: readonly SkillGroup[] = [
         label: "DAW",
         pct: 40,
         since: 2025,
-        note: "FL Studio open most Sundays. Mostly still learning where things live.",
+        note: "FL Studio, most Sundays. I am still learning the fundamentals of the workflow.",
         tags: ["fl-studio", "arrangement", "mixing"],
       },
       {
@@ -147,7 +147,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Beat making",
         pct: 35,
         since: 2025,
-        note: "Loops that never quite become songs. Currently working on the never.",
+        note: "Loops that have not yet become finished songs. Finishing them is the current goal.",
         tags: ["drums", "sampling", "groove"],
       },
       {
@@ -155,7 +155,7 @@ export const skills: readonly SkillGroup[] = [
         label: "Sound design",
         pct: 25,
         since: 2026,
-        note: "Turning knobs until something sounds deliberate instead of accidental.",
+        note: "Shaping sounds until they feel deliberate rather than accidental.",
         tags: ["synthesis", "fx", "texture"],
       },
     ],

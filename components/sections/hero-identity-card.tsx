@@ -59,7 +59,7 @@ export function HeroIdentityCard() {
           className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-2/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-fg-muted backdrop-blur"
         >
           <span className="size-1.5 rounded-full bg-accent shadow-[0_0_10px_var(--color-accent)] animate-beacon" />
-          freelance + collab — channel open
+          open to freelance and collaboration
         </span>
 
         {/* Prompt line */}

@@ -28,16 +28,16 @@ export const profile: Profile = {
   alias: "Haxurn",
   role: "Cybersecurity + full-stack developer",
   tagline:
-    "Cybersecurity enthusiast, full-stack developer, and aspiring music producer.",
+    "Security engineer and full-stack developer, co-founder of Solvix Labs PLC, and a music producer in training.",
   bio: [
-    "I'm Sami — online I go by Haxurn. I spend most of my week reading binaries, writing TypeScript, and chasing small discoveries that make systems safer or interfaces calmer.",
-    "Joined INSA in 2023 while still in grade 9 — youngest in the room, learning security from people who'd been doing it for a decade. Picked up Python and CTFs in early 2024, then shifted to full-time TypeScript development by mid-year.",
-    "Today I'm co-founder and engineer at Solvix Labs PLC, where we build Axova — the unified commerce system for Ethiopia. On the side, I build and maintain plugins for the Better Auth ecosystem and contribute to open source.",
+    "My name is Sami, and online I go by Haxurn. I am a security engineer and full-stack developer based in Addis Ababa. Most of my week is spent reading binaries, writing TypeScript, and looking for the small improvements that make a system safer or an interface calmer.",
+    "I joined the Information Network Security Administration in 2023, while still in grade 9, and learned the discipline from analysts who had practised it for a decade. In early 2024 I began programming in Python and competing in capture-the-flag events. By the middle of that year I had moved into full-time TypeScript development.",
+    "Today I am co-founder and engineer at Solvix Labs PLC, where we build Axova, a unified commerce platform for Ethiopian merchants. Alongside that work I author and maintain plugins for the Better Auth ecosystem and contribute to open-source projects.",
   ],
   location: "Addis Ababa, Ethiopia",
   timezone: "Africa/Addis_Ababa",
   email: "haxurn@gmail.com",
-  focus: "Co-founder @ Solvix Labs · building Axova",
+  focus: "Co-founder, Solvix Labs PLC · building Axova",
   upstream: { mergedPrs: 6, repos: 4 },
   socials: {
     github: {

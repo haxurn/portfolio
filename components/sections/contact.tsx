@@ -46,8 +46,8 @@ export function Contact() {
       <Reveal preset="header">
         <SectionHeader
           id="contact"
-          title="Say hi. I read everything."
-          sub="Fastest way is email — I usually reply within 24–48 hours. GitHub and Instagram are open too."
+          title="Get in touch. I read every message."
+          sub="Email is the fastest route; I usually reply within 24 to 48 hours. GitHub and Instagram are open as well."
         />
       </Reveal>
 

@@ -10,7 +10,7 @@ export function Skills() {
         <SectionHeader
           id="skills"
           title="Fifteen entries, one open dossier."
-          sub="Every line I actually use, ranked by how far I'd trust myself with the docs closed."
+          sub="Every tool I use in earnest, rated by how far I would trust myself with the documentation closed."
         />
       </Reveal>
 
