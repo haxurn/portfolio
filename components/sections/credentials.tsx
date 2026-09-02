@@ -28,8 +28,8 @@ const CREDENTIALS: Credential[] = [
   {
     id: "solvix",
     glyph: "SL",
-    name: "Solvix Labs LLC",
-    role: "Engineer · private product",
+    name: "Solvix Labs PLC",
+    role: "Co-founder · engineer · Axova",
     meta: "2026 → now",
     status: "current",
     tilt: 3,

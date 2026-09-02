@@ -30,8 +30,8 @@ export const journey: readonly JourneyEntry[] = [
   {
     date: "2026 / now",
     rawDate: "2026",
-    title: "Engineer at Solvix Labs",
+    title: "Co-founder, Solvix Labs PLC",
     body:
-      "Currently building a private product at Solvix Labs LLC. Security-minded, TypeScript end-to-end. Shipping code, not just exploiting it.",
+      "Co-founded Solvix Labs PLC and build Axova there, the unified commerce system for Ethiopia. Security-minded, TypeScript end-to-end. Shipping code, not just exploiting it.",
   },
 ] as const;

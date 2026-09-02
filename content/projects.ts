@@ -67,11 +67,11 @@ export const projects: readonly Project[] = [
     summary:
       "The unified commerce system for Ethiopia — storefront, POS, marketplace, delivery.",
     description:
-      "The product I work on at Solvix Labs. Merchants open a store in minutes, sell in person through Axova POS, reach shoppers on Axova Market and ship through Axova Go — one account, every channel. I build across the web app and the platform underneath it.",
+      "The product we build at Solvix Labs PLC, the company I co-founded. Merchants open a store in minutes, sell in person through Axova POS, reach shoppers on Axova Market and ship through Axova Go — one account, every channel. I build across the web app and the platform underneath it.",
     stack: ["TypeScript", "Next.js", "Commerce", "Monorepo"],
     status: "ongoing",
     type: "project",
-    role: "Engineer · Solvix Labs",
+    role: "Co-founder · Solvix Labs PLC",
     year: 2025,
     links: [{ label: "Visit site", href: "https://www.axova.io", kind: "live" }],
     image: {
