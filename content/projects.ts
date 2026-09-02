@@ -126,28 +126,6 @@ export const projects: readonly Project[] = [
     },
   },
   {
-    slug: "mstradingx",
-    title: "M_S Trading",
-    summary:
-      "Forex education and mentorship platform covering market structure, risk management, and trading psychology.",
-    description:
-      "A mentorship-focused trading school with published programmes, a full curriculum, and a process page that sets expectations before anyone enrols. The design is light and restrained, built to speak to serious learners.",
-    stack: ["TypeScript", "Next.js", "Education"],
-    status: "shipped",
-    type: "project",
-    role: "Design + build",
-    year: 2026,
-    links: [
-      { label: "Visit site", href: "https://mstradingx.vercel.app", kind: "live" },
-    ],
-    image: {
-      src: "/work/mstradingx.jpg",
-      alt: "M_S Trading homepage — light hero reading Trade with structure, discipline, and a clear plan.",
-      width: 1200,
-      height: 650,
-    },
-  },
-  {
     slug: "better-middleware",
     title: "better-middleware",
     summary:

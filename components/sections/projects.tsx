@@ -54,7 +54,7 @@ export function Projects() {
         <Reveal
           stagger={0.08}
           selector="[data-site-card]"
-          className="grid grid-cols-1 gap-4 md:grid-cols-2"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
         >
           {siteProjects.map((p, i) => (
             <div
