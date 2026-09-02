@@ -7,11 +7,18 @@ export type JourneyEntry = {
 
 export const journey: readonly JourneyEntry[] = [
   {
+    date: "2022",
+    rawDate: "2022",
+    title: "First lines of code, self-taught",
+    body:
+      "At fifteen I opened a text editor and wrote my first HTML and CSS, with no course and no mentor, only documentation and a browser. I built small pages for friends and spent more time breaking them than styling them. That curiosity about what happens underneath a page set the direction for everything since.",
+  },
+  {
     date: "2023",
     rawDate: "2023",
-    title: "Joined INSA",
+    title: "Security at sixteen: joined INSA",
     body:
-      "I joined the Information Network Security Administration and learned security practice from analysts with a decade of experience.",
+      "Wanting to understand how systems fail, I joined the Information Network Security Administration at sixteen and learned security practice from analysts with a decade of experience.",
   },
   {
     date: "2024 / early",
