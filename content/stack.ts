@@ -8,7 +8,11 @@ export type StackGroupId =
 export type StackItem = {
   readonly id: string;
   readonly name: string;
-  /** Simple Icons slug — rendered from https://cdn.simpleicons.org/<slug>. */
+  /**
+   * Icon source. Simple Icons slug (rendered as a currentColor mask from
+   * cdn.simpleicons.org), or a full https URL to a colour SVG (rendered as an
+   * image, greyscale until hover). AWS marks are not in Simple Icons.
+   */
   readonly icon: string;
   /** Brand colour, 6-digit hex without '#'. Shown on hover only. */
   readonly brand: string;
@@ -22,6 +26,9 @@ export type StackGroup = {
   readonly title: string;
   readonly glyph: string;
 };
+
+/** Colour SVG logos (gilbarbara/logos) for marks Simple Icons does not carry. */
+export const LOGOS_CDN = "https://cdn.jsdelivr.net/gh/gilbarbara/logos@main/logos";
 
 export const stackGroups: readonly StackGroup[] = [
   { id: "languages", title: "Languages", glyph: "◢" },
@@ -52,6 +59,8 @@ export const stack: readonly StackItem[] = [
   { id: "zod", name: "Zod", icon: "zod", brand: "3E67B1", group: "frameworks", evidence: "16 projects · every system boundary" },
   { id: "radix", name: "Radix / shadcn", icon: "shadcnui", brand: "000000", group: "frameworks", evidence: "7 projects · accessible primitives" },
   { id: "gsap", name: "GSAP", icon: "gsap", brand: "0AE448", group: "frameworks", evidence: "This site · scroll choreography" },
+  { id: "react-native", name: "React Native", icon: "react", brand: "61DAFB", group: "frameworks", evidence: "9 apps · Axova POS, Go, Hub, Link, Marketplace" },
+  { id: "expo", name: "Expo", icon: "expo", brand: "000020", group: "frameworks", evidence: "9 apps · EAS builds, Expo Router" },
 
   // Data & auth
   { id: "postgres", name: "PostgreSQL", icon: "postgresql", brand: "4169E1", group: "data", evidence: "Axova, Geez Security, SchoolHub" },
@@ -63,8 +72,17 @@ export const stack: readonly StackItem[] = [
   { id: "betterauth", name: "Better Auth", icon: "betterauth", brand: "000000", group: "data", evidence: "7 projects · 2 published plugins · upstream contributor" },
 
   // Infrastructure
+  { id: "aws", name: "AWS", icon: `${LOGOS_CDN}/aws.svg`, brand: "FF9900", group: "infra", evidence: "Axova production + staging · SDK in 4 repos" },
+  { id: "eks", name: "Amazon EKS", icon: `${LOGOS_CDN}/aws-eks.svg`, brand: "FF9900", group: "infra", evidence: "Axova cluster · Karpenter autoscaling" },
+  { id: "rds", name: "Amazon RDS", icon: `${LOGOS_CDN}/aws-rds.svg`, brand: "527FFF", group: "infra", evidence: "Postgres + RDS Proxy · Axova" },
+  { id: "s3", name: "S3 · CloudFront", icon: `${LOGOS_CDN}/aws-s3.svg`, brand: "569A31", group: "infra", evidence: "Media storage and CDN · Axova, Geez Security, Siranet" },
+  { id: "elasticache", name: "ElastiCache", icon: `${LOGOS_CDN}/aws-elasticache.svg`, brand: "C925D1", group: "infra", evidence: "Redis for queues and sessions · Axova" },
+  { id: "iam", name: "VPC · IAM · WAF", icon: `${LOGOS_CDN}/aws-iam.svg`, brand: "DD344C", group: "infra", evidence: "Network, identity and edge security modules · Axova" },
+  { id: "secrets", name: "Secrets Manager", icon: `${LOGOS_CDN}/aws-secrets-manager.svg`, brand: "DD344C", group: "infra", evidence: "External Secrets into the cluster · Axova" },
+  { id: "kubernetes", name: "Kubernetes", icon: "kubernetes", brand: "326CE5", group: "infra", evidence: "Helm charts, HPA, network policies · Axova" },
+  { id: "helm", name: "Helm", icon: "helm", brand: "0F1689", group: "infra", evidence: "Per-app charts, staging + production values · Axova" },
+  { id: "terraform", name: "Terraform", icon: "terraform", brand: "844FBA", group: "infra", evidence: "15 modules · bootstrap, staging, production · Axova" },
   { id: "docker", name: "Docker", icon: "docker", brand: "2496ED", group: "infra", evidence: "7 Dockerfiles · Compose for local stacks" },
-  { id: "terraform", name: "Terraform", icon: "terraform", brand: "844FBA", group: "infra", evidence: "Axova infrastructure" },
   { id: "vercel", name: "Vercel", icon: "vercel", brand: "000000", group: "infra", evidence: "5 live sites" },
   { id: "railway", name: "Railway", icon: "railway", brand: "0B0D0E", group: "infra", evidence: "Axova services" },
   { id: "gha", name: "GitHub Actions", icon: "githubactions", brand: "2088FF", group: "infra", evidence: "CI on Axova, Geez Security, this site" },
@@ -83,8 +101,12 @@ export const stack: readonly StackItem[] = [
 
 export const STACK_ICON_CDN = "https://cdn.simpleicons.org";
 
+export function isIconUrl(icon: string): boolean {
+  return icon.startsWith("https://");
+}
+
 export function stackIconUrl(item: StackItem): string {
-  return `${STACK_ICON_CDN}/${item.icon}`;
+  return isIconUrl(item.icon) ? item.icon : `${STACK_ICON_CDN}/${item.icon}`;
 }
 
 export function stackByGroup(groupId: StackGroupId): readonly StackItem[] {

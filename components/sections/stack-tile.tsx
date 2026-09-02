@@ -1,4 +1,4 @@
-import { stackIconUrl, type StackItem } from "@/content";
+import { isIconUrl, stackIconUrl, type StackItem } from "@/content";
 
 /**
  * One toolchain entry. The logo is a CSS mask over `currentColor`, so it
@@ -40,9 +40,21 @@ export function StackTile({ item }: { item: StackItem }) {
         aria-hidden
         className="grid size-9 shrink-0 place-items-center rounded-sm border border-border/60 bg-bg/60 text-fg-muted transition-colors duration-200 group-hover:text-(--brand)"
       >
-        <span
-          className="block size-5 bg-current [mask-image:var(--stack-icon)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:var(--stack-icon)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]"
-        />
+        {isIconUrl(item.icon) ? (
+          // Colour mark: greyscale until hover. Plain <img> — it is an SVG from a CDN, nothing to optimise.
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={iconUrl}
+            alt=""
+            width={20}
+            height={20}
+            loading="lazy"
+            decoding="async"
+            className="size-5 object-contain opacity-70 grayscale transition-[opacity,filter] duration-200 group-hover:opacity-100 group-hover:grayscale-0"
+          />
+        ) : (
+          <span className="block size-5 bg-current [mask-image:var(--stack-icon)] [mask-position:center] [mask-repeat:no-repeat] [mask-size:contain] [-webkit-mask-image:var(--stack-icon)] [-webkit-mask-position:center] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:contain]" />
+        )}
       </span>
 
       <div className="min-w-0">

@@ -27,6 +27,8 @@ export {
   stackGroups,
   stackByGroup,
   stackIconUrl,
+  isIconUrl,
+  LOGOS_CDN,
   STACK_ICON_CDN,
   type StackItem,
   type StackGroup,
