@@ -73,7 +73,7 @@ export function Projects() {
         <Reveal
           stagger={0.06}
           selector="[data-os-card]"
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           {openSourceProjects.map((p) => (
             <div key={p.slug} data-os-card="" data-reveal-child="">

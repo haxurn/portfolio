@@ -175,6 +175,23 @@ export const projects: readonly Project[] = [
     ],
   },
   {
+    slug: "better-auth",
+    title: "better-auth",
+    summary:
+      "Merged upstream documentation for Better Auth's Fastify integration, plus the waitlist plugin proposal that became better-waitlist.",
+    description:
+      "Upstream contributions to better-auth/better-auth, the TypeScript authentication framework. My Fastify integration guide was merged into the official documentation. I also proposed a first-party waitlist plugin; that work now ships as the standalone better-waitlist package.",
+    stack: ["TypeScript", "Open Source", "Authentication"],
+    status: "shipped",
+    type: "contribution",
+    role: "Contributor · fork → upstream",
+    year: 2025,
+    links: [
+      { label: "PR #2006 · merged", href: "https://github.com/better-auth/better-auth/pull/2006", kind: "pr" },
+      { label: "PR #3400 · waitlist proposal", href: "https://github.com/better-auth/better-auth/pull/3400", kind: "pr" },
+    ],
+  },
+  {
     slug: "better-hub",
     title: "better-hub",
     summary:
