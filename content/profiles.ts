@@ -63,6 +63,15 @@ export const profiles: readonly ExternalProfile[] = [
     note: "Level 65 · Guru · top 2% · 114 rooms · 15 badges",
   },
   {
+    id: "hackthebox",
+    label: "Hack The Box",
+    handle: "haxurn",
+    url: "https://app.hackthebox.com/users/1398172",
+    icon: "hackthebox",
+    kind: "ctf",
+    note: "Hacker rank · global rank 1049",
+  },
+  {
     id: "bunabyte",
     label: "Buna Byte CTF",
     handle: "haxurn",
