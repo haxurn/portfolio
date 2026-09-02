@@ -35,3 +35,9 @@ export {
   type StackGroupId,
 } from "./stack";
 export { journey, type JourneyEntry } from "./journey";
+export {
+  profiles,
+  PROFILE_KIND_LABEL,
+  type ExternalProfile,
+  type ProfileKind,
+} from "./profiles";

@@ -3,6 +3,7 @@ import { Github, Instagram, Mail, MessageCircle, ArrowUpRight, Radio } from "luc
 import { Reveal } from "@/components/reveal";
 import { SectionHeader } from "./section-header";
 import { ContactForm } from "./contact-form";
+import { ProfileGrid } from "./profile-grid";
 import { profile } from "@/content";
 
 export function Contact() {
@@ -116,7 +117,7 @@ export function Contact() {
 
             {/* Roster footer */}
             <div className="mt-auto flex items-center justify-between border-t border-border/60 bg-surface-2/30 px-5 py-2 font-mono text-[9px] uppercase tracking-[0.28em] text-fg-subtle">
-              <span>◉ roster · 4 nodes</span>
+              <span>◉ roster · {socials.length.toString().padStart(2, "0")} nodes</span>
               <span>priority · email</span>
             </div>
           </div>
@@ -151,6 +152,11 @@ export function Contact() {
           </div>
         </Reveal>
       </div>
+
+      {/* Secondary presence */}
+      <Reveal delay={0.1} stagger={0.04} className="mt-6 lg:mt-10">
+        <ProfileGrid />
+      </Reveal>
     </section>
   );
 }
